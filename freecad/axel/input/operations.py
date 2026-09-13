@@ -73,6 +73,14 @@ class Conflict:
         )
 
 
+def _shortcut_of(command: object) -> str:
+    """Сочетание команды или пустая строка: у команды без действия ``getShortcut`` бросает."""
+    try:
+        return command.getShortcut() or ""
+    except Exception:  # noqa: BLE001 — команда без действия
+        return ""
+
+
 def shortcuts_in_use() -> dict[str, list[str]]:
     """Сочетания всех команд FreeCAD: сочетание (в верхнем регистре) → имена команд."""
     used: dict[str, list[str]] = {}
@@ -80,10 +88,7 @@ def shortcuts_in_use() -> dict[str, list[str]]:
         command = Gui.Command.get(name)
         if command is None:
             continue
-        try:
-            shortcut = command.getShortcut()
-        except Exception:  # noqa: BLE001 — команда без действия
-            continue
+        shortcut = _shortcut_of(command)
         if shortcut:
             used.setdefault(shortcut.upper().replace(" ", ""), []).append(name)
     return used

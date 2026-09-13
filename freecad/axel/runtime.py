@@ -55,6 +55,14 @@ def view_key(view: object) -> int:
     return int(view.getSceneGraph().this)
 
 
+def _graphics_view_of(view: object) -> object | None:
+    """``graphicsView()`` вида или ``None``, если вид уже закрыт и вызов бросает."""
+    try:
+        return view.graphicsView()
+    except Exception:  # noqa: BLE001 — вид закрыт
+        return None
+
+
 @dataclass
 class ViewSlot:
     """Сцена, окружение и привязка одного 3D-вида."""
@@ -298,10 +306,7 @@ class Runtime:
         if widget is None:
             return None
         for slot in self.slots.values():
-            try:
-                gv = slot.view.graphicsView()
-            except Exception:  # noqa: BLE001
-                continue
+            gv = _graphics_view_of(slot.view)
             if gv is not None and (gv is widget or widget.isAncestorOf(gv)):
                 return slot
         return None

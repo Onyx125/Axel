@@ -4,6 +4,11 @@
 
 Section numbers in parentheses refer to the Axel specification.
 
+## [0.1.1] — 2026-09-13
+
+- Two `try/except/continue` spots flagged by Bandit (B112, low severity) in `input/operations.py` and `runtime.py` are replaced with small helper functions (`_shortcut_of`, `_graphics_view_of`); no behaviour change. The Addon Index scans addons with Bandit, the report is now clean.
+- README (English and Russian) opens with the manipulator anatomy diagram; the diagram is generated from the handle constants and is bilingual.
+
 ## [0.1.0] — 2026-09-13
 
 First release for the Addon Manager (content type "other", `package.xml` per Appendix B). Axel is not a workbench: restart FreeCAD manually after installing.
