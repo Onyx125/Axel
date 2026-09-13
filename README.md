@@ -1,38 +1,40 @@
 # Axel
 
-Манипулятор объектов для 3D-вида FreeCAD по образцу Gumball из Rhinoceros. Python-пакет `freecad.axel`.
+*English · [Русский](README.ru.md)*
 
-Журнал изменений — [CHANGELOG.md](CHANGELOG.md).
+Object manipulator for the FreeCAD 3D view, modelled on the Gumball from Rhinoceros. Python package `freecad.axel`.
 
-## Использование
+Changelog — [CHANGELOG.md](CHANGELOG.md).
 
-Выделите объект — у него появится манипулятор. Стрелки перемещают по осям, квадраты — в плоскости, начало — свободно в плоскости экрана, дуги поворачивают. Кубики масштаба и точки выдавливания появляются у объектов, для которых верстак объявил адаптер с такими возможностями (например, вершины и линии Draft, пример `examples/cylinder.py`).
+## Usage
 
-- **Щелчок** по стрелке, дуге или кубику — числовой ввод; **цифры во время перетаскивания** — тоже.
-- **Ctrl** — шаг (переключатель в строке состояния), **Shift** — равномерный масштаб, масштаб в плоскости, выдавливание в обе стороны.
-- **Двойные буквы перед перетаскиванием:** `C, C` — копия, `E, E` — выдавить (для Draft Line — новый сегмент из концевой вершины), `D, D` — разбить на сегменты ползунком. Операции адаптеров верстаков получают свои буквы и команды автоматически.
-- **Двойной щелчок** по ручке — перенос начала; **ПКМ** по началу — меню манипулятора; **Esc** — отмена.
-- Объект, который команда верстака выделила сразу после создания (например, Draft Line), Axel не подхватывает: выделение снимается, манипулятор появится, когда вы выделите объект сами (настройка «Снимать выделение…», по умолчанию включена).
-- Настройки — «Правка → Настройки → Axel»; команды — меню «Вид».
+Select an object and the manipulator appears on it. Arrows move along the axes, squares move in a plane, arcs rotate. Scale cubes and extrude dots appear on objects whose workbench has declared an adapter with those capabilities (for example, Draft vertices and lines, or the `examples/cylinder.py` sample).
 
-Авторам верстаков: [docs/Руководство автора адаптера.md](docs/Руководство%20автора%20адаптера.md), API — `freecad.axel.api` (`API_VERSION = 1`).
+- **Click** an arrow, arc or cube for numeric input; **typing digits while dragging** works too.
+- **Ctrl** temporarily inverts snapping (the toggle itself is the *Axel: step* command in the View menu); **Shift** — uniform scale, scale in a plane, extrude to both sides.
+- **Double letters before dragging:** `C, C` — copy, `E, E` — extrude (for a Draft line: a new segment from the end vertex), `D, D` — split into segments with a slider. Operations declared by workbench adapters get their own letters and commands automatically.
+- **Double-click** a handle to relocate the origin; **right-click** the origin for the manipulator menu; **Esc** cancels.
+- An object that a workbench command selects right after creating it (Draft Line, for instance) is not picked up: the selection is cleared and the manipulator appears once you select the object yourself (the "Deselect new objects…" setting, on by default).
+- Settings — Edit → Preferences → Axel; commands — the View menu.
 
-## Требования
+Workbench authors: [docs/Adapter Author Guide.md](docs/Adapter%20Author%20Guide.md); the API is `freecad.axel.api` (`API_VERSION = 1`).
 
-- FreeCAD ≥ 1.1 (Python 3.11, pivy, PySide из поставки FreeCAD). Внешних зависимостей нет.
+## Requirements
 
-## Установка
+- FreeCAD ≥ 1.1 (Python 3.11, pivy and PySide as shipped with FreeCAD). No external dependencies.
 
-**Менеджер дополнений** («Инструменты → Менеджер дополнений», тип «прочее»). Пока Axel не попал в каталог FreeCAD, добавьте репозиторий вручную: в настройках Менеджера дополнений («Пользовательские репозитории») укажите адрес `https://github.com/Onx125/Axel` и ветку `main`, затем найдите «Axel» в списке и нажмите «Установить». Axel — не верстак, поэтому Менеджер дополнений **не напомнит о перезапуске**: после установки или обновления перезапустите FreeCAD вручную.
+## Installation
 
-**Вручную:** скопируйте папку репозитория (или распакуйте архив выпуска) в `Mod/Axel` пользовательской папки FreeCAD — на Windows `%APPDATA%\FreeCAD\v1-1\Mod\Axel`, — чтобы внутри лежали `package.xml` и `freecad/axel/`. Перезапустите FreeCAD.
+**Addon Manager** (Tools → Addon Manager, content type "other"). Until Axel is listed in the FreeCAD catalog, add the repository by hand: in the Addon Manager preferences ("Custom repositories") enter `https://github.com/Onx125/Axel` with branch `main`, then find "Axel" in the list and press Install. Axel is not a workbench, so the Addon Manager **will not remind you to restart**: restart FreeCAD manually after installing or updating.
 
-После запуска у выделенного объекта появляется манипулятор; включить и выключить его можно кнопкой «Axel» в строке состояния или командой в меню «Вид».
+**Manually:** copy the repository folder (or unpack a release archive) into `Mod/Axel` of your FreeCAD user folder — on Windows `%APPDATA%\FreeCAD\v1-1\Mod\Axel` — so that `package.xml` and `freecad/axel/` are inside it. Restart FreeCAD.
 
-## Разработка
+After start-up the manipulator appears on the selected object; the "Axel" button in the status bar or the command in the View menu turns it on and off.
 
-Этот репозиторий — публикуемый минимум: пакет, `package.xml`, лицензия, журнал изменений и руководство автора адаптера, по одному коммиту на выпуск. Разработка (спецификация, тесты, пробы в живом FreeCAD) ведётся в рабочем репозитории, выпуск выкладывается скриптом `tools/publish.ps1`. Внешних зависимостей нет: нужны только Python 3.11, pivy и PySide из поставки FreeCAD 1.1.
+## Development
 
-## Лицензия
+This repository is the published minimum: the package, `package.xml`, the licence, the changelog and the adapter author guide, one commit per release. Development (the specification, tests, probes in a live FreeCAD) happens in a working repository; releases are exported by a script. No external dependencies: only Python 3.11, pivy and PySide from the FreeCAD 1.1 distribution are needed.
 
-LGPL-2.1-or-later, как у FreeCAD.
+## Licence
+
+LGPL-2.1-or-later, the same as FreeCAD.
