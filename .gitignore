@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.ruff_cache/
+.pytest_cache/
+.coverage
+*.egg-info/
+build/
+dist/
+
+# Qt / переводы: и исходник .ts, и собранный .qm под контролем — Менеджер дополнений
+# клонирует репозиторий как есть, lrelease у пользователя нет (Б.2)
+
+# PyCharm: настройки проекта под контролем, личные — нет
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/shelf/
+.idea/dictionaries/
+.idea/httpRequests/
+
+# Obsidian: конфигурация волта под контролем, состояние окна — нет
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+
+# Яндекс.Диск / Windows
+*.tmp
+Thumbs.db
+desktop.ini
+
+# Конфликтные копии Яндекс.Диска (с другого компьютера) — в git не попадают
+*(копия с компьютера*

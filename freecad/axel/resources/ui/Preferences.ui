@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AxelPreferences</class>
+ <widget class="QWidget" name="AxelPreferences">
+  <property name="windowTitle">
+   <string>Axel</string>
+  </property>
+  <layout class="QVBoxLayout" name="rootLayout">
+   <item>
+    <widget class="QTabWidget" name="tabs">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tabGeneral">
+      <attribute name="title">
+       <string>General</string>
+      </attribute>
+      <layout class="QFormLayout" name="generalLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="labelAlignment">
+         <property name="text">
+          <string>Default alignment</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="Gui::PrefComboBox" name="AlignmentDefault">
+         <property name="toolTip">
+          <string>Axes of the manipulator frame for a new selection</string>
+         </property>
+         <property name="prefEntry">
+          <cstring>AlignmentDefault</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+         <item>
+          <property name="text">
+           <string>World</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Working plane</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Object</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>View</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="labelOrigin">
+         <property name="text">
+          <string>Default origin</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="Gui::PrefComboBox" name="OriginDefault">
+         <property name="prefEntry">
+          <cstring>OriginDefault</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+         <item>
+          <property name="text">
+           <string>Bounding box centre</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Placement origin</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="Gui::PrefCheckBox" name="AutoReset">
+         <property name="text">
+          <string>Reset a relocated frame after a drag</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="prefEntry">
+          <cstring>AutoReset</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="Gui::PrefCheckBox" name="ShowTooltips">
+         <property name="text">
+          <string>Show handle tooltips</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="prefEntry">
+          <cstring>ShowTooltips</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="labelTooltipDelay">
+         <property name="text">
+          <string>Tooltip delay</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="Gui::PrefSpinBox" name="TooltipDelayMs">
+         <property name="suffix">
+          <string> ms</string>
+         </property>
+         <property name="maximum">
+          <number>5000</number>
+         </property>
+         <property name="value">
+          <number>700</number>
+         </property>
+         <property name="prefEntry">
+          <cstring>TooltipDelayMs</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="Gui::PrefCheckBox" name="DeselectNewObjects">
+         <property name="text">
+          <string>Clear the selection a command makes right after creating an object</string>
+         </property>
+         <property name="toolTip">
+          <string>Draft and some other workbenches select a new object as soon as it is created; with this option nothing stays selected and the manipulator does not appear until you select the object yourself.</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="prefEntry">
+          <cstring>DeselectNewObjects</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="Gui::PrefCheckBox" name="DebugLog">
+         <property name="text">
+          <string>Write debug messages to the report view</string>
+         </property>
+         <property name="prefEntry">
+          <cstring>DebugLog</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabView">
+      <attribute name="title">
+       <string>Appearance</string>
+      </attribute>
+      <layout class="QFormLayout" name="viewLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="labelSize">
+         <property name="text">
+          <string>Manipulator size</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="Gui::PrefSpinBox" name="SizePx">
+         <property name="suffix">
+          <string> px</string>
+         </property>
+         <property name="minimum">
+          <number>40</number>
+         </property>
+         <property name="maximum">
+          <number>300</number>
+         </property>
+         <property name="value">
+          <number>80</number>
+         </property>
+         <property name="prefEntry">
+          <cstring>SizePx</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="labelShaft">
+         <property name="text">
+          <string>Line width</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="Gui::PrefDoubleSpinBox" name="ShaftWidthPx">
+         <property name="suffix">
+          <string> px</string>
+         </property>
+         <property name="minimum">
+          <double>1.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>8.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.500000000000000</double>
+         </property>
+         <property name="prefEntry">
+          <cstring>ShaftWidthPx</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="labelOriginPx">
+         <property name="text">
+          <string>Origin sphere</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="Gui::PrefSpinBox" name="OriginPx">
+         <property name="suffix">
+          <string> px</string>
+         </property>
+         <property name="minimum">
+          <number>4</number>
+         </property>
+         <property name="maximum">
+          <number>24</number>
+         </property>
+         <property name="value">
+          <number>6</number>
+         </property>
+         <property name="prefEntry">
+          <cstring>OriginPx</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="labelEditPoint">
+         <property name="text">
+          <string>Edit point marker</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="Gui::PrefSpinBox" name="EditPointPx">
+         <property name="suffix">
+          <string> px</string>
+         </property>
+         <property name="minimum">
+          <number>4</number>
+         </property>
+         <property name="maximum">
+          <number>16</number>
+         </property>
+         <property name="value">
+          <number>7</number>
+         </property>
+         <property name="prefEntry">
+          <cstring>EditPointPx</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="labelColorX">
+         <property name="text">
+          <string>X axis colour</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="Gui::PrefColorButton" name="ColorX">
+         <property name="color">
+          <color>
+           <red>230</red>
+           <green>38</green>
+           <blue>38</blue>
+          </color>
+         </property>
+         <property name="prefEntry">
+          <cstring>ColorX</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="labelColorY">
+         <property name="text">
+          <string>Y axis colour</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="Gui::PrefColorButton" name="ColorY">
+         <property name="color">
+          <color>
+           <red>38</red>
+           <green>178</green>
+           <blue>38</blue>
+          </color>
+         </property>
+         <property name="prefEntry">
+          <cstring>ColorY</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="labelColorZ">
+         <property name="text">
+          <string>Z axis colour</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="Gui::PrefColorButton" name="ColorZ">
+         <property name="color">
+          <color>
+           <red>38</red>
+           <green>76</green>
+           <blue>242</blue>
+          </color>
+         </property>
+         <property name="prefEntry">
+          <cstring>ColorZ</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="labelColorHover">
+         <property name="text">
+          <string>Highlight colour</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="Gui::PrefColorButton" name="ColorHover">
+         <property name="color">
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </property>
+         <property name="prefEntry">
+          <cstring>ColorHover</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="labelColorDisabled">
+         <property name="text">
+          <string>Disabled colour</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="Gui::PrefColorButton" name="ColorDisabled">
+         <property name="color">
+          <color>
+           <red>140</red>
+           <green>140</green>
+           <blue>140</blue>
+          </color>
+         </property>
+         <property name="prefEntry">
+          <cstring>ColorDisabled</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+             <item row="9" column="0">
+        <widget class="QLabel" name="labelTransparency">
+         <property name="text">
+          <string>Transparency</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="1">
+        <widget class="Gui::PrefSpinBox" name="TransparencyPercent">
+         <property name="suffix">
+          <string> %</string>
+         </property>
+         <property name="minimum">
+          <number>0</number>
+         </property>
+         <property name="maximum">
+          <number>90</number>
+         </property>
+         <property name="value">
+          <number>30</number>
+         </property>
+         <property name="prefEntry">
+          <cstring>TransparencyPercent</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+</layout>
+     </widget>
+     <widget class="QWidget" name="tabHandles">
+      <attribute name="title">
+       <string>Handles</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="handlesLayout">
+       <item>
+        <widget class="Gui::PrefCheckBox" name="ShowMove">
+         <property name="text">
+          <string>Move arrows</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="prefEntry">
+          <cstring>ShowMove</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Gui::PrefCheckBox" name="ShowMove2D">
+         <property name="text">
+          <string>Plane handles</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="prefEntry">
+          <cstring>ShowMove2D</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Gui::PrefCheckBox" name="ShowRotate">
+         <property name="text">
+          <string>Rotation arcs</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="prefEntry">
+          <cstring>ShowRotate</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Gui::PrefCheckBox" name="ShowScale">
+         <property name="text">
+          <string>Scale handles</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="prefEntry">
+          <cstring>ShowScale</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Gui::PrefCheckBox" name="ShowExtrude">
+         <property name="text">
+          <string>Extrude dots</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="prefEntry">
+          <cstring>ShowExtrude</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="handlesSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabDrag">
+      <attribute name="title">
+       <string>Dragging</string>
+      </attribute>
+      <layout class="QFormLayout" name="dragLayout">
+       <item row="0" column="1">
+        <widget class="Gui::PrefCheckBox" name="StepEnabled">
+         <property name="text">
+          <string>Step enabled</string>
+         </property>
+         <property name="toolTip">
+          <string>Ctrl temporarily inverts the step while dragging</string>
+         </property>
+         <property name="prefEntry">
+          <cstring>StepEnabled</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="labelMoveStep">
+         <property name="text">
+          <string>Move step</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="Gui::PrefDoubleSpinBox" name="MoveStep">
+         <property name="suffix">
+          <string> mm</string>
+         </property>
+         <property name="minimum">
+          <double>0.010000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>100000.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>10.000000000000000</double>
+         </property>
+         <property name="prefEntry">
+          <cstring>MoveStep</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="labelAngleStep">
+         <property name="text">
+          <string>Angle step</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="Gui::PrefDoubleSpinBox" name="AngleStep">
+         <property name="suffix">
+          <string>°</string>
+         </property>
+         <property name="minimum">
+          <double>0.010000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>180.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>15.000000000000000</double>
+         </property>
+         <property name="prefEntry">
+          <cstring>AngleStep</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="labelScaleStep">
+         <property name="text">
+          <string>Scale step</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="Gui::PrefDoubleSpinBox" name="ScaleStep">
+         <property name="minimum">
+          <double>0.001000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>10.000000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>0.100000000000000</double>
+         </property>
+         <property name="value">
+          <double>0.100000000000000</double>
+         </property>
+         <property name="prefEntry">
+          <cstring>ScaleStep</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="labelStrength">
+         <property name="text">
+          <string>Drag strength</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="Gui::PrefSpinBox" name="DragStrength">
+         <property name="suffix">
+          <string> %</string>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+         <property name="value">
+          <number>100</number>
+         </property>
+         <property name="prefEntry">
+          <cstring>DragStrength</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="labelDegenerate">
+         <property name="text">
+          <string>Degenerate angle</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="Gui::PrefDoubleSpinBox" name="DegenerateAngleDeg">
+         <property name="suffix">
+          <string>°</string>
+         </property>
+         <property name="minimum">
+          <double>1.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>30.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>8.000000000000000</double>
+         </property>
+         <property name="prefEntry">
+          <cstring>DegenerateAngleDeg</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="labelPickRadius">
+         <property name="text">
+          <string>Pick radius</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="Gui::PrefSpinBox" name="PickRadiusPx">
+         <property name="suffix">
+          <string> px</string>
+         </property>
+         <property name="minimum">
+          <number>2</number>
+         </property>
+         <property name="maximum">
+          <number>20</number>
+         </property>
+         <property name="value">
+          <number>6</number>
+         </property>
+         <property name="prefEntry">
+          <cstring>PickRadiusPx</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="labelSliderStep">
+         <property name="text">
+          <string>Slider step</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="Gui::PrefSpinBox" name="SliderStepPx">
+         <property name="suffix">
+          <string> px</string>
+         </property>
+         <property name="minimum">
+          <number>5</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+         <property name="value">
+          <number>20</number>
+         </property>
+         <property name="prefEntry">
+          <cstring>SliderStepPx</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="Gui::PrefCheckBox" name="AllowMirror">
+         <property name="text">
+          <string>Allow mirroring by negative scale</string>
+         </property>
+         <property name="prefEntry">
+          <cstring>AllowMirror</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0">
+        <widget class="QLabel" name="labelModStep">
+         <property name="text">
+          <string>Step modifier</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="1">
+        <widget class="Gui::PrefComboBox" name="ModStep">
+         <property name="prefEntry">
+          <cstring>ModStep</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+         <item>
+          <property name="text">
+           <string>Ctrl</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Shift</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Meta</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabPerformance">
+      <attribute name="title">
+       <string>Performance</string>
+      </attribute>
+      <layout class="QFormLayout" name="perfLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="labelRecompute">
+         <property name="text">
+          <string>Recompute while dragging</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="Gui::PrefComboBox" name="RecomputeDuringDrag">
+         <property name="toolTip">
+          <string>Never changes properties only; dependent objects follow on release</string>
+         </property>
+         <property name="prefEntry">
+          <cstring>RecomputeDuringDrag</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+         <item>
+          <property name="text">
+           <string>Never</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Throttled</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Always</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="labelThrottle">
+         <property name="text">
+          <string>Recompute interval</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="Gui::PrefSpinBox" name="RecomputeThrottleMs">
+         <property name="suffix">
+          <string> ms</string>
+         </property>
+         <property name="minimum">
+          <number>16</number>
+         </property>
+         <property name="maximum">
+          <number>1000</number>
+         </property>
+         <property name="value">
+          <number>100</number>
+         </property>
+         <property name="prefEntry">
+          <cstring>RecomputeThrottleMs</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="labelProxy">
+         <property name="text">
+          <string>Wireframe preview above</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="Gui::PrefSpinBox" name="ProxyPreviewThreshold">
+         <property name="suffix">
+          <string> objects</string>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>10000</number>
+         </property>
+         <property name="value">
+          <number>50</number>
+         </property>
+         <property name="prefEntry">
+          <cstring>ProxyPreviewThreshold</cstring>
+         </property>
+         <property name="prefPath">
+          <cstring>Mod/Axel</cstring>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Gui::PrefCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>Gui/PrefWidgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Gui::PrefSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>Gui/PrefWidgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Gui::PrefDoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>Gui/PrefWidgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Gui::PrefComboBox</class>
+   <extends>QComboBox</extends>
+   <header>Gui/PrefWidgets.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Gui::PrefColorButton</class>
+   <extends>QPushButton</extends>
+   <header>Gui/PrefWidgets.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
