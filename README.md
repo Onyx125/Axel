@@ -4,7 +4,7 @@
 
 Object manipulator for the FreeCAD 3D view, modelled on the Gumball from Rhinoceros. Python package `freecad.axel`.
 
-Changelog — [CHANGELOG.md](CHANGELOG.md).
+![Anatomy of the manipulator](docs/02-widget-anatomy.en.svg)
 
 ## Usage
 
@@ -30,10 +30,6 @@ Workbench authors: [docs/Adapter Author Guide.md](docs/Adapter%20Author%20Guide.
 **Manually:** copy the repository folder (or unpack a release archive) into `Mod/Axel` of your FreeCAD user folder — on Windows `%APPDATA%\FreeCAD\v1-1\Mod\Axel` — so that `package.xml` and `freecad/axel/` are inside it. Restart FreeCAD.
 
 After start-up the manipulator appears on the selected object; the "Axel" button in the status bar or the command in the View menu turns it on and off.
-
-## Development
-
-This repository is the published minimum: the package, `package.xml`, the licence, the changelog and the adapter author guide, one commit per release. Development (the specification, tests, probes in a live FreeCAD) happens in a working repository; releases are exported by a script. No external dependencies: only Python 3.11, pivy and PySide from the FreeCAD 1.1 distribution are needed.
 
 ## Licence
 

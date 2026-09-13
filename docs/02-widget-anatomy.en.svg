@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="430" viewBox="0 0 800 430" font-family="Segoe UI, Arial, DejaVu Sans, sans-serif">
+<title>Anatomy of the Axel manipulator</title>
+<rect width="800" height="430" fill="#FFFFFF"/>
+<polyline points="111.4,252.9 112.8,248.0 114.3,243.0 116.0,238.1 117.7,233.2 119.5,228.2 121.5,223.3 123.5,218.4 125.6,213.5 127.8,208.7 130.1,203.8 132.5,199.0 135.0,194.2 137.5,189.5 140.2,184.8 142.9,180.1 145.7,175.5 148.6,170.9 151.5,166.4 154.6,161.9 157.7,157.5 160.8,153.1 164.1,148.8 167.4,144.6 170.7,140.5 174.2,136.4 177.6,132.4 181.2,128.5 184.8,124.6 188.4,120.9 192.1,117.2 195.8,113.7 199.5,110.2" fill="none" stroke="#E24B4A" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="111.4" cy="252.9" r="5.6" fill="#E24B4A"/>
+<circle cx="199.5" cy="110.2" r="5.6" fill="#E24B4A"/>
+<polyline points="300.5,110.2 304.2,113.7 307.9,117.2 311.6,120.9 315.2,124.6 318.8,128.5 322.4,132.4 325.8,136.4 329.3,140.5 332.6,144.6 335.9,148.8 339.2,153.1 342.3,157.5 345.4,161.9 348.5,166.4 351.4,170.9 354.3,175.5 357.1,180.1 359.8,184.8 362.5,189.5 365.0,194.2 367.5,199.0 369.9,203.8 372.2,208.7 374.4,213.5 376.5,218.4 378.5,223.3 380.5,228.2 382.3,233.2 384.0,238.1 385.7,243.0 387.2,248.0 388.6,252.9" fill="none" stroke="#3B8C1A" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="300.5" cy="110.2" r="5.6" fill="#3B8C1A"/>
+<circle cx="388.6" cy="252.9" r="5.6" fill="#3B8C1A"/>
+<polyline points="338.2,334.5 333.0,335.7 327.7,336.8 322.4,337.8 317.1,338.8 311.6,339.6 306.2,340.5 300.7,341.2 295.2,341.8 289.6,342.4 284.0,342.9 278.4,343.3 272.7,343.7 267.0,344.0 261.4,344.2 255.7,344.3 250.0,344.3 244.3,344.3 238.6,344.2 233.0,344.0 227.3,343.7 221.6,343.3 216.0,342.9 210.4,342.4 204.8,341.8 199.3,341.2 193.8,340.5 188.4,339.6 182.9,338.8 177.6,337.8 172.3,336.8 167.0,335.7 161.8,334.5" fill="none" stroke="#2F7FD0" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="338.2" cy="334.5" r="5.6" fill="#2F7FD0"/>
+<circle cx="161.8" cy="334.5" r="5.6" fill="#2F7FD0"/>
+<polygon points="199.7,208.9 166.2,225.7 166.2,188.2 199.7,171.4" fill="#E24B4A" fill-opacity="0.25" stroke="#E24B4A" stroke-width="1.2" stroke-linejoin="round"/>
+<line x1="188.5" y1="214.5" x2="188.5" y2="177.0" stroke="#E24B4A" stroke-opacity="0.5" stroke-width="0.8"/>
+<line x1="199.7" y1="196.4" x2="166.2" y2="213.2" stroke="#E24B4A" stroke-opacity="0.5" stroke-width="0.8"/>
+<line x1="177.4" y1="220.1" x2="177.4" y2="182.6" stroke="#E24B4A" stroke-opacity="0.5" stroke-width="0.8"/>
+<line x1="199.7" y1="183.9" x2="166.2" y2="200.7" stroke="#E24B4A" stroke-opacity="0.5" stroke-width="0.8"/>
+<polygon points="300.3,208.9 300.3,171.4 333.8,188.2 333.8,225.7" fill="#3B8C1A" fill-opacity="0.25" stroke="#3B8C1A" stroke-width="1.2" stroke-linejoin="round"/>
+<line x1="300.3" y1="196.4" x2="333.8" y2="213.2" stroke="#3B8C1A" stroke-opacity="0.5" stroke-width="0.8"/>
+<line x1="311.5" y1="214.5" x2="311.5" y2="177.0" stroke="#3B8C1A" stroke-opacity="0.5" stroke-width="0.8"/>
+<line x1="300.3" y1="183.9" x2="333.8" y2="200.7" stroke="#3B8C1A" stroke-opacity="0.5" stroke-width="0.8"/>
+<line x1="322.6" y1="220.1" x2="322.6" y2="182.6" stroke="#3B8C1A" stroke-opacity="0.5" stroke-width="0.8"/>
+<polygon points="250.0,290.3 283.5,307.1 250.0,323.8 216.5,307.1" fill="#2F7FD0" fill-opacity="0.25" stroke="#2F7FD0" stroke-width="1.2" stroke-linejoin="round"/>
+<line x1="261.2" y1="295.9" x2="227.7" y2="312.6" stroke="#2F7FD0" stroke-opacity="0.5" stroke-width="0.8"/>
+<line x1="238.8" y1="295.9" x2="272.4" y2="312.6" stroke="#2F7FD0" stroke-opacity="0.5" stroke-width="0.8"/>
+<line x1="272.3" y1="301.5" x2="238.8" y2="318.2" stroke="#2F7FD0" stroke-opacity="0.5" stroke-width="0.8"/>
+<line x1="227.7" y1="301.5" x2="261.2" y2="318.2" stroke="#2F7FD0" stroke-opacity="0.5" stroke-width="0.8"/>
+<line x1="276.8" y1="253.4" x2="356.2" y2="293.1" stroke="#E24B4A" stroke-width="2.5" stroke-linecap="round"/>
+<polygon points="384.1,307.1 353.2,299.1 359.2,287.1" fill="#E24B4A"/>
+<rect x="317.9" y="270.6" width="13.5" height="13.5" fill="#E24B4A"/>
+<circle cx="343.5" cy="286.7" r="6.8" fill="#E24B4A"/>
+<text x="402.9" y="321.4" text-anchor="middle" font-size="14" font-weight="700" fill="#E24B4A">X</text>
+<line x1="223.2" y1="253.4" x2="143.8" y2="293.1" stroke="#3B8C1A" stroke-width="2.5" stroke-linecap="round"/>
+<polygon points="115.9,307.1 140.8,287.1 146.8,299.1" fill="#3B8C1A"/>
+<rect x="168.6" y="270.6" width="13.5" height="13.5" fill="#3B8C1A"/>
+<circle cx="156.5" cy="286.7" r="6.8" fill="#3B8C1A"/>
+<text x="97.1" y="321.4" text-anchor="middle" font-size="14" font-weight="700" fill="#3B8C1A">Y</text>
+<line x1="250.0" y1="210.0" x2="250.0" y2="121.2" stroke="#2F7FD0" stroke-width="2.5" stroke-linecap="round"/>
+<polygon points="250.0,90.0 256.8,121.2 243.2,121.2" fill="#2F7FD0"/>
+<rect x="243.2" y="149.7" width="13.5" height="13.5" fill="#2F7FD0"/>
+<circle cx="250.0" cy="135.4" r="6.8" fill="#2F7FD0"/>
+<text x="250.0" y="74.0" text-anchor="middle" font-size="14" font-weight="700" fill="#2F7FD0">Z</text>
+<circle cx="250.0" cy="240.0" r="11.2" fill="#FFFFFF" stroke="#444441" stroke-width="2.3"/>
+<circle cx="231.0" cy="116.0" r="9" fill="#FFFFFF" stroke="#2C2C2A" stroke-width="1.2"/>
+<text x="231.0" y="120.0" text-anchor="middle" font-size="11" font-weight="700" fill="#2C2C2A">1</text>
+<circle cx="337.0" cy="256.0" r="9" fill="#FFFFFF" stroke="#2C2C2A" stroke-width="1.2"/>
+<text x="337.0" y="260.0" text-anchor="middle" font-size="11" font-weight="700" fill="#2C2C2A">2</text>
+<circle cx="342.0" cy="308.0" r="9" fill="#FFFFFF" stroke="#2C2C2A" stroke-width="1.2"/>
+<text x="342.0" y="312.0" text-anchor="middle" font-size="11" font-weight="700" fill="#2C2C2A">3</text>
+<circle cx="131.0" cy="165.0" r="9" fill="#FFFFFF" stroke="#2C2C2A" stroke-width="1.2"/>
+<text x="131.0" y="169.0" text-anchor="middle" font-size="11" font-weight="700" fill="#2C2C2A">4</text>
+<circle cx="208.0" cy="320.0" r="9" fill="#FFFFFF" stroke="#2C2C2A" stroke-width="1.2"/>
+<text x="208.0" y="324.0" text-anchor="middle" font-size="11" font-weight="700" fill="#2C2C2A">5</text>
+<circle cx="274.0" cy="231.0" r="9" fill="#FFFFFF" stroke="#2C2C2A" stroke-width="1.2"/>
+<text x="274.0" y="235.0" text-anchor="middle" font-size="11" font-weight="700" fill="#2C2C2A">6</text>
+<circle cx="470.0" cy="58.0" r="9" fill="#FFFFFF" stroke="#2C2C2A" stroke-width="1.2"/>
+<text x="470.0" y="62.0" text-anchor="middle" font-size="11" font-weight="700" fill="#2C2C2A">1</text>
+<text x="488" y="62.3" text-anchor="start" font-size="12" fill="#2C2C2A">Move manipulators along the X, Y, Z axes</text>
+<circle cx="470.0" cy="88.0" r="9" fill="#FFFFFF" stroke="#2C2C2A" stroke-width="1.2"/>
+<text x="470.0" y="92.0" text-anchor="middle" font-size="11" font-weight="700" fill="#2C2C2A">2</text>
+<text x="488" y="92.3" text-anchor="start" font-size="12" fill="#2C2C2A">Scale manipulators</text>
+<circle cx="470.0" cy="118.0" r="9" fill="#FFFFFF" stroke="#2C2C2A" stroke-width="1.2"/>
+<text x="470.0" y="122.0" text-anchor="middle" font-size="11" font-weight="700" fill="#2C2C2A">3</text>
+<text x="488" y="122.3" text-anchor="start" font-size="12" fill="#2C2C2A">Extrude manipulators</text>
+<circle cx="470.0" cy="148.0" r="9" fill="#FFFFFF" stroke="#2C2C2A" stroke-width="1.2"/>
+<text x="470.0" y="152.0" text-anchor="middle" font-size="11" font-weight="700" fill="#2C2C2A">4</text>
+<text x="488" y="152.3" text-anchor="start" font-size="12" fill="#2C2C2A">Rotation manipulators (arcs)</text>
+<circle cx="470.0" cy="178.0" r="9" fill="#FFFFFF" stroke="#2C2C2A" stroke-width="1.2"/>
+<text x="470.0" y="182.0" text-anchor="middle" font-size="11" font-weight="700" fill="#2C2C2A">5</text>
+<text x="488" y="182.3" text-anchor="start" font-size="12" fill="#2C2C2A">Move 2D manipulators</text>
+<circle cx="470.0" cy="215.0" r="9" fill="#FFFFFF" stroke="#2C2C2A" stroke-width="1.2"/>
+<text x="470.0" y="219.0" text-anchor="middle" font-size="11" font-weight="700" fill="#2C2C2A">6</text>
+<text x="488" y="212.3" text-anchor="start" font-size="12" fill="#2C2C2A">Origin: right-click — manipulator menu;</text>
+<text x="488" y="227.3" text-anchor="start" font-size="12" fill="#2C2C2A">double-click a handle — relocate the origin</text>
+</svg>
