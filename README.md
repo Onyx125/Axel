@@ -25,7 +25,7 @@ Workbench authors: [docs/Adapter Author Guide.md](docs/Adapter%20Author%20Guide.
 
 ## Installation
 
-**Addon Manager** (Tools → Addon Manager, content type "other"). Until Axel is listed in the FreeCAD catalog, add the repository by hand: in the Addon Manager preferences ("Custom repositories") enter `https://github.com/Onx125/Axel` with branch `main`, then find "Axel" in the list and press Install. Axel is not a workbench, so the Addon Manager **will not remind you to restart**: restart FreeCAD manually after installing or updating.
+**Addon Manager** (Tools → Addon Manager, content type "other"). Until Axel is listed in the FreeCAD catalog, add the repository by hand: in the Addon Manager preferences ("Custom repositories") enter `https://github.com/Onyx125/Axel` with branch `main`, then find "Axel" in the list and press Install. Axel is not a workbench, so the Addon Manager **will not remind you to restart**: restart FreeCAD manually after installing or updating.
 
 **Manually:** copy the repository folder (or unpack a release archive) into `Mod/Axel` of your FreeCAD user folder — on Windows `%APPDATA%\FreeCAD\v1-1\Mod\Axel` — so that `package.xml` and `freecad/axel/` are inside it. Restart FreeCAD.
 

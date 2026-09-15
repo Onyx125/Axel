@@ -6,10 +6,10 @@
   <date>2026-09-13</date>
   <maintainer email="elton-ford3609@gazeta.pl">Алексей</maintainer>
   <license file="LICENSE">LGPL-2.1-or-later</license>
-  <url type="repository" branch="main">https://github.com/Onx125/Axel</url>
-  <url type="bugtracker">https://github.com/Onx125/Axel/issues</url>
-  <url type="readme">https://github.com/Onx125/Axel/blob/main/README.md</url>
-  <url type="documentation">https://github.com/Onx125/Axel/tree/main/docs</url>
+  <url type="repository" branch="main">https://github.com/Onyx125/Axel</url>
+  <url type="bugtracker">https://github.com/Onyx125/Axel/issues</url>
+  <url type="readme">https://github.com/Onyx125/Axel/blob/main/README.md</url>
+  <url type="documentation">https://github.com/Onyx125/Axel/tree/main/docs</url>
   <icon>freecad/axel/resources/icons/Axel.svg</icon>
   <tag>manipulator</tag>
   <tag>gumball</tag>
