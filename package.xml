@@ -2,8 +2,8 @@
 <package format="1" xmlns="https://wiki.freecad.org/Package_Metadata">
   <name>Axel</name>
   <description>Axel: object manipulator for the 3D view, inspired by the Rhino Gumball. Move, rotate, scale and extrude selected objects by dragging handles; numeric input, snapping, copy and split operations. Not a workbench: restart FreeCAD after installing.</description>
-  <version>0.1.1</version>
-  <date>2026-09-13</date>
+  <version>0.1.2</version>
+  <date>2026-09-17</date>
   <maintainer email="elton-ford3609@gazeta.pl">Алексей</maintainer>
   <license file="LICENSE">LGPL-2.1-or-later</license>
   <url type="repository" branch="main">https://github.com/Onyx125/Axel</url>

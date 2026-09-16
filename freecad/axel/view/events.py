@@ -21,6 +21,7 @@ from ..core.intent import HandleId, HandleKind
 from ..input.numeric import NumericField
 from . import picking
 from .cursors import HoverFeedback
+from .magnet import CursorMagnet
 from .scene import ManipulatorScene
 
 Vector = App.Vector
@@ -248,6 +249,7 @@ class ViewBinding:
         self._camera_node: coin.SoCamera | None = None  # узел, на котором стоит датчик
         self._key_filter: _EscapeFilter | None = None
         self.feedback: HoverFeedback | None = None
+        self.magnet: CursorMagnet | None = None  # примагничивание курсора к ручке (8.5)
         self._bound = False
 
     def bind(self) -> None:
@@ -267,9 +269,15 @@ class ViewBinding:
             self._key_filter = _EscapeFilter(c, self.scene, self.activate)
             self._key_filter.on_mouse = self._attach_camera_sensor
             viewport.installEventFilter(self._key_filter)
+            # клавиши Qt отдаёт виджету с фокусом — это сам QGraphicsView, а не его viewport,
+            # вниз они не идут (проба d18: настоящий Esc до фильтра на viewport не доходил)
+            self._key_filter.key_source = viewer_widget
+            if viewer_widget is not None:
+                viewer_widget.installEventFilter(self._key_filter)
             self.feedback = HoverFeedback(
                 viewport, c.settings.tooltip_delay_ms, c.settings.show_tooltips
             )
+            self.magnet = CursorMagnet(self.scene, viewport, lambda: c.settings.snap_cursor)
         self._bound = True
 
     def unbind(self) -> None:
@@ -287,10 +295,17 @@ class ViewBinding:
         viewport = _viewport_widget(self.view)
         if viewport is not None and self._key_filter is not None:
             viewport.removeEventFilter(self._key_filter)
+        if self._key_filter is not None:
+            source = self._key_filter.key_source
+            if source is not None and widget_alive(source):
+                source.removeEventFilter(self._key_filter)
             self._key_filter = None
         if self.feedback is not None:
             self.feedback.clear()
             self.feedback = None
+        if self.magnet is not None:
+            self.magnet.stop()
+            self.magnet = None
         self._bound = False
 
     def _on_location(self, node: coin.SoEventCallback) -> None:
@@ -301,12 +316,18 @@ class ViewBinding:
         if not self.scene.visible:
             if self.feedback is not None and self.feedback.handle is not None:
                 self.feedback.clear()
+            if self.magnet is not None:
+                self.magnet.stop()
             return
         x, y = node.getEvent().getPosition().getValue()
         handle = picking.handle_under_cursor(self.scene, int(x), int(y))
         if handle is not None and self.activate is not None:
             self.activate()
         self.controller.on_hover(handle)
+        if self.magnet is not None:
+            # тянуть только к ручке, которую контроллер подсветил (не отключённую)
+            hovered = handle if self.controller.hover_handle == handle else None
+            self.magnet.update(hovered, (int(x), int(y)))
         if self.feedback is not None:
             caps = self.controller.caps
             reason = (caps.disabled_reason or "") if caps is not None else ""
@@ -343,6 +364,8 @@ class ViewBinding:
         def call(handle: HandleId) -> None:
             if self.activate is not None:
                 self.activate()
+            if self.magnet is not None:
+                self.magnet.stop()  # во время перетаскивания курсор ведёт пользователь
             fn(handle)
 
         return call
@@ -368,9 +391,16 @@ class _EscapeFilter(QtCore.QObject):
         self.controller = controller
         self.scene = scene
         self.on_mouse: Callable[[], None] | None = None  # событие мыши в виде (смена камеры)
+        self.key_source: QtCore.QObject | None = None  # виджет вьюера: с него берутся клавиши
+
+    KEY_KINDS = (QtCore.QEvent.ShortcutOverride, QtCore.QEvent.KeyPress, QtCore.QEvent.KeyRelease)
 
     def eventFilter(self, obj: QtCore.QObject, event: QtCore.QEvent) -> bool:
         kind = event.type()
+        if obj is self.key_source and kind not in self.KEY_KINDS:
+            # мышь приходит viewport-у и, если не принята, поднимается к вьюеру — второй раз
+            # не обрабатывать; с вьюера берутся только клавиши
+            return False
         if self.on_mouse is not None and kind in (
             QtCore.QEvent.MouseMove,
             QtCore.QEvent.MouseButtonPress,
@@ -490,16 +520,43 @@ class _EscapeFilter(QtCore.QObject):
         return picking.handle_under_cursor(self.scene, px[0], px[1])
 
 
-def _viewer_widget(view: object) -> QtWidgets.QWidget | None:
-    """``Gui::View3DInventorViewer`` (QGraphicsView) вида ``view`` — родитель для полей ввода."""
+def widget_alive(widget: object) -> bool:
+    """Обёртка PySide указывает на живой объект C++.
+
+    У закрывающегося вида ``graphicsView()`` ещё отвечает, но отдаёт обёртку уже удалённого
+    ``QGraphicsView`` — любое обращение к ней бросает ``RuntimeError`` (замечание пользователя:
+    трассировки при закрытии вида).
+    """
+    if widget is None:
+        return False
     try:
-        return view.graphicsView()
-    except Exception:  # noqa: BLE001 — старые сборки без graphicsView(): первый вьюер
+        import shiboken6
+
+        return bool(shiboken6.isValid(widget))
+    except ImportError:  # другая сборка Qt: проверка обращением
+        try:
+            widget.objectName()
+        except RuntimeError:
+            return False
+        return True
+
+
+def _viewer_widget(view: object) -> QtWidgets.QWidget | None:
+    """``Gui::View3DInventorViewer`` (QGraphicsView) вида ``view`` — родитель для полей ввода.
+
+    ``None``, если вид уже закрывается (виджет удалён).
+    """
+    try:
+        gv = view.graphicsView()
+    except AttributeError:  # старые сборки без graphicsView(): первый вьюер
         main = Gui.getMainWindow()
         for gv in main.findChildren(QtWidgets.QGraphicsView):
             if gv.metaObject().className() == "Gui::View3DInventorViewer":
                 return gv
-    return None
+        return None
+    except Exception:  # noqa: BLE001 — вид закрыт
+        return None
+    return gv if widget_alive(gv) else None
 
 
 def _viewport_widget(view: object) -> QtWidgets.QWidget | None:

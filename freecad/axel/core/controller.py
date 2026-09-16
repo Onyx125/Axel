@@ -70,6 +70,7 @@ class Settings:
     origin_mode: OriginMode = OriginMode.BOUNDING_BOX_CENTER
     show_tooltips: bool = True
     tooltip_delay_ms: int = constants.TOOLTIP_DELAY_MS
+    snap_cursor: bool = True  # доводить курсор до оси ручки под ним (8.5)
     shown_kinds: frozenset[HandleKind] = frozenset(HandleKind)  # группы ручек (15.4)
     ring_radius_px: float = (
         constants.ARC_RADIUS_FRACTION * constants.SIZE_PX
@@ -1044,9 +1045,12 @@ class Controller:
             self.relocated.pop(self._memory_key(self.target), None)
 
     def on_escape(self) -> bool:
-        """Esc во время перетаскивания — отмена с откатом (11.4).
+        """Esc: отмена перетаскивания с откатом (11.4), иначе — как щелчок в пустоте.
 
-        Возвращает ``True``, если сессия была открыта.
+        Модальные состояния Esc отменяет: числовое поле, перетаскивание, перенос начала.
+        В остальном Esc делает ровно то, что щелчок мимо объекта: снимает выделение, и
+        манипулятор исчезает (замечание пользователя) — взведённая операция и выбранная
+        точка уходят вместе с ним. Возвращает ``True``, если Esc обработан.
         """
         if self.state is State.NUMERIC:
             self._numeric_cancel()
@@ -1057,16 +1061,29 @@ class Controller:
                 self.cancel_relocate()
                 self.state = State.SHOWN
                 return True
-            if self.armed_op is not None:  # Esc снимает взведённую операцию (9.2.1)
-                self.disarm_operation()
-                self.env.status(tr("Axel: operation cleared"))
-                return True
-            return self.clear_point()  # Esc возвращает манипулятор к объекту (7.10)
+            return self._deselect()
         self._abort_session()
         self._drag_cancelled = True  # предстоящее finish-событие драггера игнорируется
         self.disarm_operation()  # операция действует на одно перетаскивание (9.2.1)
         self.state = State.SHOWN
         self.refresh()
+        return True
+
+    def _deselect(self) -> bool:
+        """Снять выделение цели по Esc; только при показанном манипуляторе.
+
+        В подавленном состоянии (правка эскиза, команда Draft) Esc принадлежит FreeCAD.
+        Наблюдатель выделения перестроит цель и скроет манипулятор; операция и точка
+        снимаются здесь же, чтобы не ждать его.
+        """
+        if self.state not in (State.SHOWN, State.HOVER) or self.target is None:
+            return False
+        doc = self.env.active_document()
+        if doc is None:
+            return False
+        self.disarm_operation()
+        self.clear_point()
+        self.env.select(doc.Name, [])
         return True
 
     def _follow_drag(self, session: DragSession, intent: Intent) -> None:

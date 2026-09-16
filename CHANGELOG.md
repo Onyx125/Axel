@@ -4,6 +4,15 @@
 
 Section numbers in parentheses refer to the Axel specification.
 
+## [0.1.2] — 2026-09-17
+
+- Wider hit areas without changing the look (8.3): each arrow, arc, scale cube and extrude dot carries an invisible pickable shadow — a tube of ≈5.6 px around the shaft and the arc that also reaches beyond the arrow tip (outward only) and beyond both ends of the arc, and a sphere of ≈5.6 px around the cube and the dot. Arrows and arcs now pick from about 6 px away instead of 2–6 and a little past their ends, the cube and the dot from 5–6 px instead of 4–5.
+- **Esc** with the manipulator shown acts like a click on empty space: the selection is cleared and the manipulator goes away (9.1). A drag, the numeric field and origin relocation are still cancelled first. While Axel is suppressed (sketch edit, a Draft command) Esc is left to FreeCAD.
+- Keys are now taken from the viewer widget that owns the keyboard focus, not from its viewport: a real Esc during a drag (and digits typed during a drag) did not reach Axel before — only synthetic events in the probes did.
+- A 3D view whose widget is already gone (a view being closed) no longer raises `RuntimeError … already deleted` on every refresh; such a view is skipped and a failed binding leaves no stray nodes in the scene graph (5.1.6).
+- The preferences group now has an icon (`preferences-axel`); FreeCAD no longer reports "Cannot find icon: preferences-axel" when the theme changes.
+- Magnetic cursor (8.5): while the cursor is over a handle it is gently pulled to the centre of the scale cube or extrude dot, or to the nearest point of an arrow's axis or of an arc, so that a click lands on the handle; the plane square is large enough and is left alone. Setting *Pull the cursor onto the handle under it* (`SnapCursor`, on by default).
+
 ## [0.1.1] — 2026-09-13
 
 - Two `try/except/continue` spots flagged by Bandit (B112, low severity) in `input/operations.py` and `runtime.py` are replaced with small helper functions (`_shortcut_of`, `_graphics_view_of`); no behaviour change. The Addon Index scans addons with Bandit, the report is now clean.

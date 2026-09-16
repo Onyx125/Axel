@@ -13,6 +13,7 @@
 
 from __future__ import annotations
 
+import itertools
 import math
 from dataclasses import dataclass, field
 from enum import Enum, auto
@@ -52,6 +53,7 @@ class HandleStyle:
     dimmed_transparency: float = 0.7
     disabled_transparency: float = 0.5
     hover_width_factor: float = 1.5
+    show_hitboxes: bool = False  # отладка: тени ручек каркасом (параметр ShowHitboxes)
 
     def px(self, value_px: float) -> float:
         """Размер в пикселях → единицы ручки (S = 1)."""
@@ -82,6 +84,23 @@ ARC_RADIUS = constants.ARC_RADIUS_FRACTION
 # было 182°–268° (86°), затем 190,6°–259,4°; теперь концы считает arc_angles() от зазора SHAFT_FROM
 ARC_SEGMENTS = 32
 ARC_END_DOT_PX = 6.0  # диаметр шариков на концах дуги, логические пиксели
+# невидимая, но пикаемая «тень» ручек (замечание пользователя: промахи): Coin рисует
+# SoDrawStyle INVISIBLE, но луч-пикинг её видит — хитбокс шире видимой геометрии
+# трубка вдоль стержня стрелки и дуги, ≈8 px при S = 80: радиус пикинга FreeCAD (5 px) линиям
+# и так даёт ~5 px, трубка 0,07 почти ничего не добавляла (проба d19)
+HIT_TUBE_RADIUS = 0.07  # было 0,10; на 30 % меньше по замечанию пользователя
+# тени стрелки и дуги длиннее видимой геометрии (замечание пользователя): у стрелки —
+# наружу, за вершину конуса (к началу нет — там шарик и маркеры точек); у дуги — за оба
+# концевых шарика. Хвосты дуг соседних осей сходятся у отрицательной полуоси: при 10°
+# зазор между трубками ≈6 px
+HIT_ARROW_OVERHANG = 0.25 / 3  # было 0,25; втрое короче по замечанию пользователя
+HIT_ARC_TAIL_DEG = 3.6  # хвост дуги за краем концевого шарика; было ≈7,1° (10° от центра)
+# сфера вокруг кубика масштаба и шарика выдавливания, ≈5,6 px. Больше нельзя: тень объёмная,
+# и в косом виде луч через точку стержня *до* кубика проходит сквозь край его тени — вдоль оси
+# захват тянется на ≈1,2·r (изометрия), середина стержня уходила бы кубику (s4, d16). Шайба,
+# широкая поперёк и короткая вдоль, хуже сферы: её ободок ловит луч ещё дальше от центра
+HIT_DOT_RADIUS = 0.07
+HIT_ARC_SEGMENTS = 8  # цилиндров вдоль дуги
 ORIGIN_OUTLINE_PX = 1.25  # толщина линии контура шарика начала, px
 ORIGIN_EXTRA_TRANSPARENCY = 0.2  # белый шарик прозрачнее остальных ручек на столько
 ORIGIN_OUTLINE_TRANSPARENCY = 0.6  # контур прозрачнее ручек, но не менее общей прозрачности
@@ -355,6 +374,76 @@ def arc_angles(style: HandleStyle) -> tuple[float, float]:
     return 270.0 - half, 180.0 + half
 
 
+def _tube(
+    a: tuple[float, float, float], b: tuple[float, float, float], radius: float
+) -> coin.SoSeparator:
+    """Цилиндр от ``a`` до ``b`` (ось цилиндра Coin — Y, поворачивается на отрезок)."""
+    sep = coin.SoSeparator()
+    ax, ay, az = a
+    bx, by, bz = b
+    dx, dy, dz = bx - ax, by - ay, bz - az
+    length = math.sqrt(dx * dx + dy * dy + dz * dz)
+    tr = coin.SoTranslation()
+    tr.translation.setValue((ax + bx) / 2, (ay + by) / 2, (az + bz) / 2)
+    sep.addChild(tr)
+    rot = coin.SoRotation()
+    rot.rotation.setValue(coin.SbRotation(coin.SbVec3f(0, 1, 0), coin.SbVec3f(dx, dy, dz)))
+    sep.addChild(rot)
+    cyl = coin.SoCylinder()
+    cyl.radius.setValue(radius)
+    cyl.height.setValue(length)
+    sep.addChild(cyl)
+    return sep
+
+
+def _hit_shadow(handle: HandleId, style: HandleStyle) -> coin.SoSeparator | None:
+    """Невидимая пикаемая тень ручки — хитбокс шире видимой геометрии.
+
+    Стрелка — трубка от начала стержня до вершины конуса; дуга — цепочка цилиндров; кубик
+    и шарик — сфера побольше. Квадрат плоскости и шарик начала без тени: по ним не
+    промахиваются. Радиус пикинга FreeCAD (5 px) прибавляется к тени только у линий и
+    точек, поэтому объёмные тени считаются «как есть».
+    """
+    kind = handle.kind
+    sep = coin.SoSeparator()
+    draw = coin.SoDrawStyle()
+    if style.show_hitboxes:  # отладка: полупрозрачный пурпур, чтобы посмотреть геометрию тени
+        draw.style.setValue(coin.SoDrawStyle.FILLED)
+        color = coin.SoMaterial()
+        color.diffuseColor.setValue(0.8, 0.0, 0.8)
+        color.transparency.setValue(0.65)
+        sep.addChild(color)
+    else:
+        draw.style.setValue(coin.SoDrawStyle.INVISIBLE)
+    sep.addChild(draw)
+    if kind is HandleKind.MOVE_AXIS:
+        tip = SHAFT_TO + CONE_LEN + HIT_ARROW_OVERHANG
+        sep.addChild(_tube((SHAFT_FROM, 0.0, 0.0), (tip, 0.0, 0.0), HIT_TUBE_RADIUS))
+    elif kind is HandleKind.SCALE_AXIS:
+        sep.addChild(_sphere_at(SCALE_BOX_AT, HIT_DOT_RADIUS))
+    elif kind is HandleKind.EXTRUDE:
+        sep.addChild(_sphere_at(EXTRUDE_DOT_AT, HIT_DOT_RADIUS))
+    elif kind is HandleKind.ROTATE:
+        from_deg, to_deg = hit_arc_angles(style)
+        pts = [
+            _arc_end(ARC_RADIUS, from_deg + (to_deg - from_deg) * i / HIT_ARC_SEGMENTS)
+            for i in range(HIT_ARC_SEGMENTS + 1)
+        ]
+        for a, b in itertools.pairwise(pts):
+            sep.addChild(_tube(a, b, HIT_TUBE_RADIUS))
+    else:
+        return None
+    return sep
+
+
+def hit_arc_angles(style: HandleStyle) -> tuple[float, float]:
+    """Концы тени дуги: край концевого шарика плюс ``HIT_ARC_TAIL_DEG`` с каждой стороны."""
+    from_deg, to_deg = arc_angles(style)  # ≈198,5° и 251,5° — центры концевых шариков
+    dot_deg = math.degrees(style.px(ARC_END_DOT_PX / 2) / ARC_RADIUS)  # радиус шарика в градусах
+    overhang = dot_deg + HIT_ARC_TAIL_DEG
+    return from_deg - overhang, to_deg + overhang
+
+
 def _geometry(
     handle: HandleId, style: HandleStyle
 ) -> tuple[coin.SoSeparator, float, list[tuple[coin.SoMaterial, float, bool]], dict]:
@@ -364,6 +453,9 @@ def _geometry(
     transparency = style.transparency
     aux: list[tuple[coin.SoMaterial, float, bool]] = []
     extra: dict = {}
+    shadow = _hit_shadow(handle, style)
+    if shadow is not None:
+        sep.addChild(shadow)
     if kind is HandleKind.MOVE_AXIS:
         sep.addChild(_line_strip([(SHAFT_FROM, 0, 0), (SHAFT_TO, 0, 0)]))
         sep.addChild(_cone_along_x(SHAFT_TO, CONE_LEN, CONE_RADIUS))
@@ -415,6 +507,52 @@ def _geometry(
     else:
         raise ValueError(f"нет геометрии для {kind}")
     return sep, transparency, aux, extra
+
+
+MAGNETIC_KINDS = frozenset(
+    {HandleKind.MOVE_AXIS, HandleKind.ROTATE, HandleKind.SCALE_AXIS, HandleKind.EXTRUDE}
+)
+"""Ручки, к которым примагничивается курсор (8.5): тонкие и мелкие.
+
+Квадрат плоскости большой — по нему не промахиваются, магнит только мешал бы (замечание
+пользователя); шарик начала не тянут.
+"""
+
+
+def anchor_polyline(handle: HandleId, style: HandleStyle) -> list[tuple[float, float, float]]:
+    """«Ось» ручки для примагничивания курсора (8.5) в координатах рамки, единицы S = 1.
+
+    Кубик масштаба, шарик выдавливания и квадрат плоскости — одна точка (центр); стрелка —
+    отрезок от начала стержня до конца тени за вершиной конуса; дуга — ломаная тени. У
+    шарика начала оси нет. Какие из них магнитятся — :data:`MAGNETIC_KINDS`. Точки уже
+    переставлены по оси ручки так же, как :func:`axis_matrix` переставляет геометрию.
+    """
+    kind = handle.kind
+    local: list[tuple[float, float, float]]
+    if kind is HandleKind.MOVE_AXIS:  # до конца тени: в «хвосте» курсор идёт на ось, не к вершине
+        local = [(SHAFT_FROM, 0.0, 0.0), (SHAFT_TO + CONE_LEN + HIT_ARROW_OVERHANG, 0.0, 0.0)]
+    elif kind is HandleKind.SCALE_AXIS:
+        local = [(SCALE_BOX_AT, 0.0, 0.0)]
+    elif kind is HandleKind.EXTRUDE:
+        local = [(EXTRUDE_DOT_AT, 0.0, 0.0)]
+    elif kind is HandleKind.MOVE_PLANE:
+        mid = (PLANE_FROM + PLANE_TO) / 2.0
+        local = [(0.0, mid, mid)]
+    elif kind is HandleKind.ROTATE:
+        from_deg, to_deg = hit_arc_angles(style)
+        local = [
+            _arc_end(ARC_RADIUS, from_deg + (to_deg - from_deg) * i / ARC_SEGMENTS)
+            for i in range(ARC_SEGMENTS + 1)
+        ]
+    else:
+        return []
+    axis = handle.axis or 0
+    out: list[tuple[float, float, float]] = []
+    for x, y, z in local:
+        v = [0.0, 0.0, 0.0]
+        v[axis % 3], v[(axis + 1) % 3], v[(axis + 2) % 3] = x, y, z
+        out.append((v[0], v[1], v[2]))
+    return out
 
 
 def base_color(handle: HandleId, style: HandleStyle) -> RGB:

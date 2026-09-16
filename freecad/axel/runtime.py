@@ -33,6 +33,7 @@ from .view.events import (
     TaskViewWatcher,
     ViewBinding,
     ViewEnvironment,
+    widget_alive,
 )
 from .view.handles import HandleStyle
 from .view.scene import ManipulatorScene
@@ -56,11 +57,12 @@ def view_key(view: object) -> int:
 
 
 def _graphics_view_of(view: object) -> object | None:
-    """``graphicsView()`` вида или ``None``, если вид уже закрыт и вызов бросает."""
+    """``graphicsView()`` вида или ``None``, если вид закрыт: вызов бросает или виджет удалён."""
     try:
-        return view.graphicsView()
+        gv = view.graphicsView()
     except Exception:  # noqa: BLE001 — вид закрыт
         return None
+    return gv if widget_alive(gv) else None
 
 
 @dataclass
@@ -91,6 +93,7 @@ class Runtime:
         self.style = HandleStyle()  # перечитываются при каждом включении (gui.preferences)
         self.controller: Controller | None = None
         self.slots: dict[int, ViewSlot] = {}  # все 3D-виды активного документа (13.4)
+        self._skipped: set[int] = set()  # виды без живого виджета, о которых уже сообщено
         self.active: ViewSlot | None = None  # вид последнего взаимодействия
         self.env: _SwitchableEnvironment | None = None
         self.selection_watcher: SelectionWatcher | None = None
@@ -235,13 +238,19 @@ class Runtime:
         """Активный вид."""
         return self.active.view if self.active is not None else None
 
-    def _open_slot(self, view: object) -> ViewSlot:
+    def _open_slot(self, view: object) -> ViewSlot | None:
+        """Слот для вида; ``None``, если вид не удалось привязать (5.1.6: узлы снимаются)."""
         key = view_key(view)
         scene = ManipulatorScene(view, self.style)
         scene.attach()
         slot = ViewSlot(key, view, scene, ViewEnvironment(view), None)  # type: ignore[arg-type]
         slot.binding = ViewBinding(view, scene, self.controller, activate=self._activator(slot))
-        slot.binding.bind()
+        try:
+            slot.binding.bind()
+        except Exception as exc:  # noqa: BLE001 — вид закрывается на полпути
+            App.Console.PrintWarning(f"Axel: вид не привязан: {exc!r}\n")
+            slot.close()
+            return None
         self.slots[key] = slot
         return slot
 
@@ -266,8 +275,18 @@ class Runtime:
                 self._set_active(None)
             slot.close()
         for key, view in wanted.items():
-            if key not in self.slots:
-                self._open_slot(view)
+            if key in self.slots:
+                continue
+            if _graphics_view_of(view) is None:
+                # у закрывающегося вида виджет уже удалён, хотя документ его ещё перечисляет —
+                # пропустить; следующий refresh его не увидит. Если же вид живой, а обёртка
+                # протухла, манипулятора в нём не будет — потому одно предупреждение на вид
+                if key not in self._skipped:
+                    self._skipped.add(key)
+                    App.Console.PrintLog("Axel: у 3D-вида нет живого виджета, вид пропущен\n")
+                continue
+            self._skipped.discard(key)
+            self._open_slot(view)
 
     def _close_slots(self) -> None:
         self._sync_views([])

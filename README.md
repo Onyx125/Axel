@@ -13,7 +13,7 @@ Select an object and the manipulator appears on it. Arrows move along the axes, 
 - **Click** an arrow, arc or cube for numeric input; **typing digits while dragging** works too.
 - **Ctrl** temporarily inverts snapping (the toggle itself is the *Axel: step* command in the View menu); **Shift** — uniform scale, scale in a plane, extrude to both sides.
 - **Double letters before dragging:** `C, C` — copy, `E, E` — extrude (for a Draft line: a new segment from the end vertex), `D, D` — split into segments with a slider. Operations declared by workbench adapters get their own letters and commands automatically.
-- **Double-click** a handle to relocate the origin; **right-click** the origin for the manipulator menu; **Esc** cancels.
+- **Double-click** a handle to relocate the origin; **right-click** the origin for the manipulator menu; **Esc** cancels a drag; otherwise it acts like a click on empty space — the selection is cleared and the manipulator goes away.
 - An object that a workbench command selects right after creating it (Draft Line, for instance) is not picked up: the selection is cleared and the manipulator appears once you select the object yourself (the "Deselect new objects…" setting, on by default).
 - Settings — Edit → Preferences → Axel; commands — the View menu.
 

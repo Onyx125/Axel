@@ -285,6 +285,34 @@ def world_per_pixel_perspective(
     return 2.0 * dist * _m.tan(height_angle / 2.0) / viewport_height_px
 
 
+def nearest_on_polyline(
+    point: tuple[float, float], polyline: list[tuple[float, float]]
+) -> tuple[float, float] | None:
+    """Ближайшая к ``point`` точка ломаной на плоскости (примагничивание курсора, 8.5).
+
+    Ломаная из одной точки — сама эта точка; пустая — ``None``. Единицы — экранные
+    пиксели, но функции всё равно.
+    """
+    if not polyline:
+        return None
+    px, py = point
+    best: tuple[float, float] | None = None
+    best_d = _m.inf
+    for (ax, ay), (bx, by) in zip(polyline, polyline[1:] or polyline, strict=False):
+        dx, dy = bx - ax, by - ay
+        length2 = dx * dx + dy * dy
+        t = (
+            0.0
+            if length2 == 0.0
+            else max(0.0, min(1.0, ((px - ax) * dx + (py - ay) * dy) / length2))
+        )
+        cx, cy = ax + dx * t, ay + dy * t
+        d = (cx - px) ** 2 + (cy - py) ** 2
+        if d < best_d:
+            best, best_d = (cx, cy), d
+    return best
+
+
 # ---------------------------------------------------------------------------
 # 10.13 Ползунок
 # ---------------------------------------------------------------------------

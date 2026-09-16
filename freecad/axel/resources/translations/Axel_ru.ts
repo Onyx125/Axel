@@ -431,6 +431,14 @@
             <translation>Draft и некоторые другие верстаки выделяют новый объект сразу после создания; с этим параметром выделение снимается, и манипулятор не появляется, пока вы не выделите объект сами.</translation>
         </message>
         <message>
+            <source>Pull the cursor onto the handle under it</source>
+            <translation>Примагничивать курсор к ручке под ним</translation>
+        </message>
+        <message>
+            <source>While the cursor is over a handle it is gently moved to the centre of the handle, or to the nearest point of an arrow's axis or of an arc, so that a click lands on it.</source>
+            <translation>Пока курсор над ручкой, он мягко доводится до её центра, а у стрелки или дуги — до ближайшей точки оси, чтобы щелчок попал точно.</translation>
+        </message>
+        <message>
             <source>Write debug messages to the report view</source>
             <translation>Писать отладочные сообщения в отчёт</translation>
         </message>

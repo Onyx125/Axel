@@ -148,6 +148,7 @@ def load_style() -> HandleStyle:
         size_px=g.GetInt("SizePx", int(d.size_px)),
         shaft_width_px=g.GetFloat("ShaftWidthPx", d.shaft_width_px),
         origin_px=g.GetInt("OriginPx", int(d.origin_px)),
+        show_hitboxes=g.GetBool("ShowHitboxes", d.show_hitboxes),  # отладка, в форме нет
         axis_colors=colors,  # type: ignore[arg-type]
         transparency=g.GetInt("TransparencyPercent", round(d.transparency * 100)) / 100.0,
         hover_color=unsigned_to_rgb(g.GetUnsigned("ColorHover", rgb_to_unsigned(d.hover_color))),
@@ -175,6 +176,7 @@ def load_settings() -> Settings:
         origin_mode=read_enum("OriginDefault", ORIGIN_ORDER, d.origin_mode),
         show_tooltips=g.GetBool("ShowTooltips", d.show_tooltips),
         tooltip_delay_ms=g.GetInt("TooltipDelayMs", d.tooltip_delay_ms),
+        snap_cursor=g.GetBool("SnapCursor", d.snap_cursor),
         shown_kinds=load_shown_kinds(),
         ring_radius_px=constants.ARC_RADIUS_FRACTION * g.GetInt("SizePx", constants.SIZE_PX),
         mod_step=read_enum("ModStep", MOD_ORDER, d.mod_step),
@@ -234,6 +236,9 @@ def install_page() -> bool:
         return False
     import FreeCADGui as Gui
 
+    # значок группы диалог ищет по имени ``preferences-<группа>`` в путях значков; без него
+    # при смене темы в отчёт падает «Cannot find icon: preferences-axel»
+    Gui.addIconPath(str(path.parent.parent / "icons"))
     Gui.addPreferencePage(str(path), PAGE_GROUP)
     _page_added = True
     return True
