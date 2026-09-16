@@ -8,14 +8,41 @@ Object manipulator for the FreeCAD 3D view, modelled on the Gumball from Rhinoce
 
 ## Usage
 
-Select an object and the manipulator appears on it. Arrows move along the axes, squares move in a plane, arcs rotate. Scale cubes and extrude dots appear on objects whose workbench has declared an adapter with those capabilities (for example, Draft vertices and lines, or the `examples/cylinder.py` sample).
+### Handles
 
-- **Click** an arrow, arc or cube for numeric input; **typing digits while dragging** works too.
-- **Ctrl** temporarily inverts snapping (the toggle itself is the *Axel: step* command in the View menu); **Shift** — uniform scale, scale in a plane, extrude to both sides.
-- **Double letters before dragging:** `C, C` — copy, `E, E` — extrude (for a Draft line: a new segment from the end vertex), `D, D` — split into segments with a slider. Operations declared by workbench adapters get their own letters and commands automatically.
-- **Double-click** a handle to relocate the origin; **right-click** the origin for the manipulator menu; **Esc** cancels a drag; otherwise it acts like a click on empty space — the selection is cleared and the manipulator goes away.
-- An object that a workbench command selects right after creating it (Draft Line, for instance) is not picked up: the selection is cleared and the manipulator appears once you select the object yourself (the "Deselect new objects…" setting, on by default).
-- Settings — Edit → Preferences → Axel; commands — the View menu.
+![Move, rotate, move in a plane, scale, extrude](docs/media/overview.gif)
+
+Select an object and the manipulator appears at the centre of its bounding box. **Arrows** move along an axis, the **square** moves in a plane, **arcs** rotate; a dashed guide and a label next to the cursor show the current distance or angle. The small **cube** on an arrow scales along that axis; the **dot** extrudes — here a closed Draft line with a face becomes a `Part::Extrusion` solid. Cubes and dots appear on objects whose workbench has declared an adapter with those capabilities (Draft lines and vertices, the `examples/cylinder.py` sample). **Shift** refines: uniform scale on a cube, scale in a plane on the square, extrude to both sides on a dot. Each drag is one undo step.
+
+### Draft lines: vertices and extrusion
+
+![Vertex markers, moving a vertex, extruding the end vertex, back to the object](docs/media/draft.gif)
+
+A selected Draft line shows **markers** on its vertices. Click a marker and the manipulator jumps to that vertex: the arrows now move only that point. On the end vertex of an open line the extrude dot pulls out a **new segment** — drag it again to continue the line. A click on the line itself returns the manipulator to the whole object; the scale cube then transforms all points precisely, leaving `Placement` untouched.
+
+### Manipulator menu
+
+![Right-click on the origin: alignment, operations, handle visibility, step](docs/media/menu.gif)
+
+**Right-click the origin** for the menu: relocate or reset the frame (a **double-click** on any handle also starts relocating the origin), choose the **alignment**, arm an **operation**, set the **drag strength**, hide or show groups of **handles**. The **Step** toggle snaps moves, rotations and scales to the configured increments — the label reads "10,00 mm · step"; **Ctrl** during a drag inverts the toggle temporarily.
+
+### Alignment
+
+![World, object and view alignment](docs/media/alignment.gif)
+
+The frame can follow the **world** axes, the **object's** own axes (`Placement`, or a hint from the adapter — for a Draft line, X runs along its first segment), the **working plane** of Draft, or the **view** (X and Y in the screen plane). Same handles, different directions; the mode is remembered in the settings and can also be cycled with the *Axel: next alignment* command.
+
+### Double letters: copy, split, extrude
+
+![C,C — copies; D,D — split into segments; E,E — extrude the end vertex](docs/media/double-keys.gif)
+
+Press a letter twice **before** dragging to arm an operation for the next drag; the hint appears next to the cursor. `C, C` — the drag makes a **copy** and selects it, so a series is just `C, C` again. `D, D` on a Draft line turns the drag into a **slider** for the number of segments (markers preview the new vertices; a digit sets the exact number). `E, E` with an end vertex selected **extrudes** a new segment from it. Workbench adapters can declare their own letters.
+
+### Numeric input
+
+![Click a handle and type; digits during a drag](docs/media/numeric.gif)
+
+**Click** an arrow, arc or scale cube instead of dragging it, and an input field appears: `25` ⏎ moves 25 mm, `45` ⏎ rotates 45°, `1.5` ⏎ scales 1.5×. **During a drag** just start typing: the digit opens the field along the current direction, and the field understands units and expressions — `3 cm` gives exactly 30 mm.
 
 Workbench authors: [docs/Adapter Author Guide.md](docs/Adapter%20Author%20Guide.md); the API is `freecad.axel.api` (`API_VERSION = 1`).
 

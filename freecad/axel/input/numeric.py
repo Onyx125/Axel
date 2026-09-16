@@ -100,10 +100,6 @@ class NumericField(QtCore.QObject):
         self._active = True
         w = self.widget
         w.setStyleSheet("")
-        if hasattr(w, "setText"):
-            w.setText(initial)  # без переформатирования InputField: «4» остаётся «4»
-        else:
-            w.setProperty("text", initial)
         w.setToolTip(
             {
                 LENGTH: tr("Length, millimetres by default"),
@@ -120,6 +116,13 @@ class NumericField(QtCore.QObject):
         w.show()
         w.raise_()
         w.setFocus()
+        # текст — только после show(): при показе InputField переформатирует содержимое
+        # («3» → «3,00», и набор « cm» после начатой цифры давал «3 cm,00»); у показанного
+        # поля setText текст не трогает (доводка 17.09.2026, снято при записи d26)
+        if hasattr(w, "setText"):
+            w.setText(initial)
+        else:
+            w.setProperty("text", initial)
         if initial and hasattr(w, "setCursorPosition"):
             w.setCursorPosition(len(initial))  # продолжать набор после начатой цифры (F-12)
         elif hasattr(w, "selectAll"):

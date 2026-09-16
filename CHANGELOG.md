@@ -4,6 +4,10 @@
 
 Section numbers in parentheses refer to the Axel specification.
 
+## [Unreleased]
+
+- Numeric input started by a digit during a drag (9.3): the field showed the digit reformatted («3» → «3,00») with the caret after the first character, so typing a unit afterwards produced «3 cm,00» and was rejected. The text is now set after the field is shown; «3», then « cm», then Enter gives 30 mm.
+
 ## [0.1.2] — 2026-09-17
 
 - Wider hit areas without changing the look (8.3): each arrow, arc, scale cube and extrude dot carries an invisible pickable shadow — a tube of ≈5.6 px around the shaft and the arc that also reaches beyond the arrow tip (outward only) and beyond both ends of the arc, and a sphere of ≈5.6 px around the cube and the dot. Arrows and arcs now pick from about 6 px away instead of 2–6 and a little past their ends, the cube and the dot from 5–6 px instead of 4–5.
