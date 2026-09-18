@@ -1,359 +1,359 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ru">
+<TS version="2.1" language="pt_BR">
     <context>
         <name>Axel</name>
         <message>
             <source>Part is constrained by joint "{}". Move it with Assembly tools or delete the joint</source>
-            <translation>Деталь связана сопряжением «{}». Перемещайте её средствами Assembly или удалите сопряжение</translation>
+            <translation>A peça está restringida pela junta "{}". Mova-a com as ferramentas do Assembly ou exclua a junta</translation>
         </message>
         <message>
             <source>Attachment offset is driven by an expression</source>
-            <translation>Смещение присоединения задано выражением</translation>
+            <translation>O deslocamento de anexação é controlado por uma expressão</translation>
         </message>
         <message>
             <source>Attachment offset is read-only</source>
-            <translation>Смещение присоединения только для чтения</translation>
+            <translation>O deslocamento de anexação é somente leitura</translation>
         </message>
         <message>
             <source>Axel: split into segments</source>
-            <translation>Axel: разбивка на сегменты</translation>
+            <translation>Axel: divisão em segmentos</translation>
         </message>
         <message>
             <source>Axel: extrude vertex</source>
-            <translation>Axel: выдавливание вершины</translation>
+            <translation>Axel: extrusão do vértice</translation>
         </message>
         <message>
             <source>Axel: vertex</source>
-            <translation>Axel: вершина</translation>
+            <translation>Axel: vértice</translation>
         </message>
         <message>
             <source>Axel: scale</source>
-            <translation>Axel: масштаб</translation>
+            <translation>Axel: escala</translation>
         </message>
         <message>
             <source>Axel: extrude</source>
-            <translation>Axel: выдавливание</translation>
+            <translation>Axel: extrusão</translation>
         </message>
         <message>
             <source>Extrude {}</source>
-            <translation>Выдавливание {}</translation>
+            <translation>Extrudar {}</translation>
         </message>
         <message>
             <source>Placement is driven by an expression</source>
-            <translation>Положение задано выражением</translation>
+            <translation>O posicionamento é controlado por uma expressão</translation>
         </message>
         <message>
             <source>Placement is read-only</source>
-            <translation>Положение только для чтения</translation>
+            <translation>O posicionamento é somente leitura</translation>
         </message>
         <message>
             <source>Placement is hidden from editing</source>
-            <translation>Положение скрыто от редактирования</translation>
+            <translation>O posicionamento está oculto para edição</translation>
         </message>
         <message>
             <source>Axel: relocating the frame. Enter — done, Esc — cancel</source>
-            <translation>Axel: перенос начала манипулятора. Enter — готово, Esc — отмена</translation>
+            <translation>Axel: movendo o quadro. Enter — concluir, Esc — cancelar</translation>
         </message>
         <message>
             <source>nothing is selected</source>
-            <translation>нет выделения</translation>
+            <translation>nada selecionado</translation>
         </message>
         <message>
             <source>not available for this target</source>
-            <translation>недоступна для этой цели</translation>
+            <translation>indisponível para este alvo</translation>
         </message>
         <message>
             <source>Axel: {} — drag a handle</source>
-            <translation>Axel: {} — потяните ручку</translation>
+            <translation>Axel: {} — arraste uma alça</translation>
         </message>
         <message>
             <source>Axel: object deleted while dragging, session cancelled</source>
-            <translation>Axel: объект удалён во время перетаскивания, сессия отменена</translation>
+            <translation>Axel: objeto excluído durante o arrasto, sessão cancelada</translation>
         </message>
         <message>
             <source>Axel: negative scale is not allowed (AllowMirror)</source>
-            <translation>Axel: отрицательный масштаб запрещён (AllowMirror)</translation>
+            <translation>Axel: escala negativa não é permitida (AllowMirror)</translation>
         </message>
         <message>
             <source>Axel: axes follow object {}</source>
-            <translation>Axel: оси по объекту {}</translation>
+            <translation>Axel: os eixos seguem o objeto {}</translation>
         </message>
         <message>
             <source>Axel: operation "{}" cleared</source>
-            <translation>Axel: операция «{}» снята</translation>
+            <translation>Axel: operação "{}" desarmada</translation>
         </message>
         <message>
             <source>Axel: operation "{}" — {}</source>
-            <translation>Axel: операция «{}» — {}</translation>
+            <translation>Axel: operação "{}" — {}</translation>
         </message>
         <message>
             <source>Axel: moving {}</source>
-            <translation>Axel: перемещается {}</translation>
+            <translation>Axel: movendo {}</translation>
         </message>
         <message>
             <source>Axel: operation commands failed: {}</source>
-            <translation>Axel: не удалось создать команды операций: {}</translation>
+            <translation>Axel: falha ao criar os comandos das operações: {}</translation>
         </message>
         <message>
             <source>Axel: could not open the session: {}</source>
-            <translation>Axel: не удалось открыть сессию: {}</translation>
+            <translation>Axel: não foi possível abrir a sessão: {}</translation>
         </message>
         <message>
             <source>Axel: preview failed, the session was cancelled: {}</source>
-            <translation>Axel: ошибка предпросмотра, сессия отменена: {}</translation>
+            <translation>Axel: falha na pré-visualização, sessão cancelada: {}</translation>
         </message>
         <message>
             <source>Axel: numeric input failed, the session was cancelled: {}</source>
-            <translation>Axel: ошибка числового ввода, сессия отменена: {}</translation>
+            <translation>Axel: falha na entrada numérica, sessão cancelada: {}</translation>
         </message>
         <message>
             <source>Axel: commit failed, the session was cancelled: {}</source>
-            <translation>Axel: ошибка фиксации, сессия отменена: {}</translation>
+            <translation>Axel: falha ao confirmar, sessão cancelada: {}</translation>
         </message>
         <message>
             <source>Axel: HUD update failed: {}</source>
-            <translation>Axel: ошибка обновления подсказок: {}</translation>
+            <translation>Axel: falha ao atualizar as indicações: {}</translation>
         </message>
         <message>
             <source>Axel: frame_hint() of adapter {} failed: {}</source>
-            <translation>Axel: ошибка frame_hint() адаптера {}: {}</translation>
+            <translation>Axel: falha em frame_hint() do adaptador {}: {}</translation>
         </message>
         <message>
             <source>Axel: copy</source>
-            <translation>Axel: копия</translation>
+            <translation>Axel: cópia</translation>
         </message>
         <message>
             <source>Axel: alignment — {}</source>
-            <translation>Axel: выравнивание — {}</translation>
+            <translation>Axel: alinhamento — {}</translation>
         </message>
         <message>
             <source>[Axel] operation "{}" uses letter {}, already taken by "{}"; not registered</source>
-            <translation>[Axel] операция «{}» использует букву {}, занятую операцией «{}»; не зарегистрирована</translation>
+            <translation>[Axel] a operação "{}" usa a letra {}, já ocupada por "{}"; não registrada</translation>
         </message>
         <message>
             <source>Relocate the origin</source>
-            <translation>Перенести начало</translation>
+            <translation>Mover a origem</translation>
         </message>
         <message>
             <source>Reset the frame</source>
-            <translation>Сбросить положение</translation>
+            <translation>Redefinir o quadro</translation>
         </message>
         <message>
             <source>Alignment</source>
-            <translation>Выравнивание</translation>
+            <translation>Alinhamento</translation>
         </message>
         <message>
             <source>Auto reset</source>
-            <translation>Автосброс</translation>
+            <translation>Redefinição automática</translation>
         </message>
         <message>
             <source>Step</source>
-            <translation>Шаг</translation>
+            <translation>Passo</translation>
         </message>
         <message>
             <source>Operations</source>
-            <translation>Операции</translation>
+            <translation>Operações</translation>
         </message>
         <message>
             <source>Drag strength</source>
-            <translation>Сила перетаскивания</translation>
+            <translation>Força do arrasto</translation>
         </message>
         <message>
             <source>Handles</source>
-            <translation>Ручки</translation>
+            <translation>Alças</translation>
         </message>
         <message>
             <source>Settings…</source>
-            <translation>Настройки…</translation>
+            <translation>Configurações…</translation>
         </message>
         <message>
             <source>Turn Axel off</source>
-            <translation>Выключить Axel</translation>
+            <translation>Desligar o Axel</translation>
         </message>
         <message>
             <source>Axel: object manipulator — turn on or off</source>
-            <translation>Axel: манипулятор объектов — включить или выключить</translation>
+            <translation>Axel: manipulador de objetos — ligar ou desligar</translation>
         </message>
         <message>
             <source>Length, millimetres by default</source>
-            <translation>Длина, единицы по умолчанию — мм</translation>
+            <translation>Comprimento, em milímetros por padrão</translation>
         </message>
         <message>
             <source>Angle in degrees</source>
-            <translation>Угол в градусах</translation>
+            <translation>Ângulo em graus</translation>
         </message>
         <message>
             <source>Factor</source>
-            <translation>Коэффициент</translation>
+            <translation>Fator</translation>
         </message>
         <message>
             <source>Value</source>
-            <translation>Значение</translation>
+            <translation>Valor</translation>
         </message>
         <message>
             <source>Axel: command {} uses key "{}" — it will fire after ShortcutTimeout, while "{}" fires at once</source>
-            <translation>Axel: у команды {} клавиша «{}» — она будет срабатывать с задержкой ShortcutTimeout; «{}» работает сразу</translation>
+            <translation>Axel: o comando {} usa a tecla "{}" — ele dispara após ShortcutTimeout, enquanto "{}" dispara imediatamente</translation>
         </message>
         <message>
             <source>Axel: shortcut "{}" is taken by command {} — operation "{}" gets no keys. Reassign it in Tools → Customize</source>
-            <translation>Axel: сочетание «{}» занято командой {} — операция «{}» без клавиш. Переназначьте в «Инструменты → Настройка»</translation>
+            <translation>Axel: o atalho "{}" está ocupado pelo comando {} — a operação "{}" fica sem teclas. Reatribua em Ferramentas → Personalizar</translation>
         </message>
         <message>
             <source>Unavailable: {}</source>
-            <translation>Недоступно: {}</translation>
+            <translation>Indisponível: {}</translation>
         </message>
         <message>
             <source>copy</source>
-            <translation>копия</translation>
+            <translation>cópia</translation>
         </message>
         <message>
             <source>step</source>
-            <translation>шаг</translation>
+            <translation>passo</translation>
         </message>
         <message>
             <source>uniform</source>
-            <translation>равномерно</translation>
+            <translation>uniforme</translation>
         </message>
         <message>
             <source>both sides</source>
-            <translation>в обе стороны</translation>
+            <translation>ambos os lados</translation>
         </message>
         <message>
             <source>{axis} arrow</source>
-            <translation>Стрелка {axis}</translation>
+            <translation>Seta {axis}</translation>
         </message>
         <message>
             <source>drag to move along the axis, click to type a distance</source>
-            <translation>перетаскивание — перемещение по оси, щелчок — ввод расстояния</translation>
+            <translation>arrastar — mover ao longo do eixo, clicar — digitar uma distância</translation>
         </message>
         <message>
             <source>Ctrl — step, C C — copy</source>
-            <translation>Ctrl — шаг, C C — копия</translation>
+            <translation>Ctrl — passo, C C — cópia</translation>
         </message>
         <message>
             <source>{plane} plane</source>
-            <translation>Плоскость {plane}</translation>
+            <translation>Plano {plane}</translation>
         </message>
         <message>
             <source>drag to move in the plane</source>
-            <translation>перетаскивание — перемещение в плоскости</translation>
+            <translation>arrastar — mover no plano</translation>
         </message>
         <message>
             <source>Origin</source>
-            <translation>Начало</translation>
+            <translation>Origem</translation>
         </message>
         <message>
             <source>right-click for the menu</source>
-            <translation>ПКМ — меню</translation>
+            <translation>clique direito — menu</translation>
         </message>
         <message>
             <source>double-click to relocate the origin</source>
-            <translation>двойной щелчок — перенос начала</translation>
+            <translation>clique duplo — mover a origem</translation>
         </message>
         <message>
             <source>{axis} arc</source>
-            <translation>Дуга {axis}</translation>
+            <translation>Arco {axis}</translation>
         </message>
         <message>
             <source>drag to rotate about the axis, click to type an angle</source>
-            <translation>перетаскивание — поворот вокруг оси, щелчок — ввод угла</translation>
+            <translation>arrastar — rotacionar em torno do eixo, clicar — digitar um ângulo</translation>
         </message>
         <message>
             <source>{axis} scale</source>
-            <translation>Масштаб {axis}</translation>
+            <translation>Escala {axis}</translation>
         </message>
         <message>
             <source>drag to scale along the axis, click to type a factor</source>
-            <translation>перетаскивание — масштаб по оси, щелчок — ввод коэффициента</translation>
+            <translation>arrastar — escalar ao longo do eixo, clicar — digitar um fator</translation>
         </message>
         <message>
             <source>Ctrl — step, Shift — uniform</source>
-            <translation>Ctrl — шаг, Shift — равномерно</translation>
+            <translation>Ctrl — passo, Shift — uniforme</translation>
         </message>
         <message>
             <source>{axis} extrude</source>
-            <translation>Выдавливание {axis}</translation>
+            <translation>Extrusão {axis}</translation>
         </message>
         <message>
             <source>drag to extrude</source>
-            <translation>перетаскивание — выдавливание</translation>
+            <translation>arrastar — extrudar</translation>
         </message>
         <message>
             <source>Shift — both directions</source>
-            <translation>Shift — в обе стороны</translation>
+            <translation>Shift — nas duas direções</translation>
         </message>
         <message>
             <source>Move arrows</source>
-            <translation>Стрелки перемещения</translation>
+            <translation>Setas de movimento</translation>
         </message>
         <message>
             <source>Plane handles</source>
-            <translation>Плоскости</translation>
+            <translation>Alças de plano</translation>
         </message>
         <message>
             <source>Rotation arcs</source>
-            <translation>Дуги поворота</translation>
+            <translation>Arcos de rotação</translation>
         </message>
         <message>
             <source>Scale handles</source>
-            <translation>Ручки масштаба</translation>
+            <translation>Alças de escala</translation>
         </message>
         <message>
             <source>Extrude dots</source>
-            <translation>Точки выдавливания</translation>
+            <translation>Pontos de extrusão</translation>
         </message>
         <message>
             <source>world</source>
-            <translation>по миру</translation>
+            <translation>mundo</translation>
         </message>
         <message>
             <source>working plane</source>
-            <translation>по рабочей плоскости</translation>
+            <translation>plano de trabalho</translation>
         </message>
         <message>
             <source>object</source>
-            <translation>по объекту</translation>
+            <translation>objeto</translation>
         </message>
         <message>
             <source>view</source>
-            <translation>по виду</translation>
+            <translation>vista</translation>
         </message>
         <message>
             <source>Copy</source>
-            <translation>Копия</translation>
+            <translation>Cópia</translation>
         </message>
         <message>
             <source>extrude</source>
-            <translation>выдавить</translation>
+            <translation>extrudar</translation>
         </message>
         <message>
             <source>split</source>
-            <translation>разбивка</translation>
+            <translation>divisão</translation>
         </message>
         <message>
             <source>split into segments</source>
-            <translation>разбить на сегменты</translation>
+            <translation>dividir em segmentos</translation>
         </message>
         <message>
             <source>Extrude vertex</source>
-            <translation>Выдавить вершину</translation>
+            <translation>Extrudar o vértice</translation>
         </message>
         <message>
             <source>Segments</source>
-            <translation>Сегментов</translation>
+            <translation>Segmentos</translation>
         </message>
         <message>
             <source>Split into segments</source>
-            <translation>Разбить на сегменты</translation>
+            <translation>Dividir em segmentos</translation>
         </message>
         <message>
             <source>Angle</source>
-            <translation>Угол</translation>
+            <translation>Ângulo</translation>
         </message>
         <message>
             <source>Sector angle</source>
-            <translation>Угол сектора</translation>
+            <translation>Ângulo do setor</translation>
         </message>
     </context>
     <context>
@@ -364,87 +364,87 @@
         </message>
         <message>
             <source>General</source>
-            <translation>Общие</translation>
+            <translation>Geral</translation>
         </message>
         <message>
             <source>Default alignment</source>
-            <translation>Выравнивание по умолчанию</translation>
+            <translation>Alinhamento padrão</translation>
         </message>
         <message>
             <source>Axes of the manipulator frame for a new selection</source>
-            <translation>Оси рамки манипулятора для нового выделения</translation>
+            <translation>Eixos do quadro do manipulador para uma nova seleção</translation>
         </message>
         <message>
             <source>World</source>
-            <translation>По миру</translation>
+            <translation>Mundo</translation>
         </message>
         <message>
             <source>Working plane</source>
-            <translation>По рабочей плоскости</translation>
+            <translation>Plano de trabalho</translation>
         </message>
         <message>
             <source>Object</source>
-            <translation>По объекту</translation>
+            <translation>Objeto</translation>
         </message>
         <message>
             <source>View</source>
-            <translation>По виду</translation>
+            <translation>Vista</translation>
         </message>
         <message>
             <source>Default origin</source>
-            <translation>Начало по умолчанию</translation>
+            <translation>Origem padrão</translation>
         </message>
         <message>
             <source>Bounding box centre</source>
-            <translation>Центр габаритов</translation>
+            <translation>Centro da caixa delimitadora</translation>
         </message>
         <message>
             <source>Placement origin</source>
-            <translation>Начало Placement</translation>
+            <translation>Origem do posicionamento</translation>
         </message>
         <message>
             <source>Reset a relocated frame after a drag</source>
-            <translation>Сбрасывать перенесённую рамку после перетаскивания</translation>
+            <translation>Redefinir um quadro movido após um arrasto</translation>
         </message>
         <message>
             <source>Show handle tooltips</source>
-            <translation>Показывать подсказки у ручек</translation>
+            <translation>Mostrar dicas das alças</translation>
         </message>
         <message>
             <source>Tooltip delay</source>
-            <translation>Задержка подсказки</translation>
+            <translation>Atraso da dica</translation>
         </message>
         <message>
             <source> ms</source>
-            <translation> мс</translation>
+            <translation> ms</translation>
         </message>
         <message>
             <source>Clear the selection a command makes right after creating an object</source>
-            <translation>Снимать выделение, которое команда делает сразу после создания объекта</translation>
+            <translation>Limpar a seleção que um comando faz logo após criar um objeto</translation>
         </message>
         <message>
             <source>Draft and some other workbenches select a new object as soon as it is created; with this option nothing stays selected and the manipulator does not appear until you select the object yourself.</source>
-            <translation>Draft и некоторые другие верстаки выделяют новый объект сразу после создания; с этим параметром выделение снимается, и манипулятор не появляется, пока вы не выделите объект сами.</translation>
+            <translation>O Draft e algumas outras bancadas selecionam um objeto novo assim que ele é criado; com esta opção nada fica selecionado e o manipulador só aparece quando você mesmo selecionar o objeto.</translation>
         </message>
         <message>
             <source>Pull the cursor onto the handle under it</source>
-            <translation>Примагничивать курсор к ручке под ним</translation>
+            <translation>Puxar o cursor para a alça sob ele</translation>
         </message>
         <message>
             <source>While the cursor is over a handle it is gently moved to the centre of the handle, or to the nearest point of an arrow's axis or of an arc, so that a click lands on it.</source>
-            <translation>Пока курсор над ручкой, он мягко доводится до её центра, а у стрелки или дуги — до ближайшей точки оси, чтобы щелчок попал точно.</translation>
+            <translation>Enquanto o cursor está sobre uma alça, ele é levado suavemente ao centro da alça, ou ao ponto mais próximo do eixo de uma seta ou de um arco, para que o clique acerte.</translation>
         </message>
         <message>
             <source>Write debug messages to the report view</source>
-            <translation>Писать отладочные сообщения в отчёт</translation>
+            <translation>Escrever mensagens de depuração na vista de relatório</translation>
         </message>
         <message>
             <source>Appearance</source>
-            <translation>Вид</translation>
+            <translation>Aparência</translation>
         </message>
         <message>
             <source>Manipulator size</source>
-            <translation>Размер манипулятора</translation>
+            <translation>Tamanho do manipulador</translation>
         </message>
         <message>
             <source> px</source>
@@ -452,39 +452,39 @@
         </message>
         <message>
             <source>Line width</source>
-            <translation>Толщина линий</translation>
+            <translation>Espessura de linha</translation>
         </message>
         <message>
             <source>Origin sphere</source>
-            <translation>Шарик начала</translation>
+            <translation>Esfera da origem</translation>
         </message>
         <message>
             <source>Edit point marker</source>
-            <translation>Маркер точки редактирования</translation>
+            <translation>Marcador do ponto de edição</translation>
         </message>
         <message>
             <source>X axis colour</source>
-            <translation>Цвет оси X</translation>
+            <translation>Cor do eixo X</translation>
         </message>
         <message>
             <source>Y axis colour</source>
-            <translation>Цвет оси Y</translation>
+            <translation>Cor do eixo Y</translation>
         </message>
         <message>
             <source>Z axis colour</source>
-            <translation>Цвет оси Z</translation>
+            <translation>Cor do eixo Z</translation>
         </message>
         <message>
             <source>Highlight colour</source>
-            <translation>Цвет подсветки</translation>
+            <translation>Cor de destaque</translation>
         </message>
         <message>
             <source>Disabled colour</source>
-            <translation>Цвет недоступного</translation>
+            <translation>Cor de desativado</translation>
         </message>
         <message>
             <source>Transparency</source>
-            <translation>Прозрачность</translation>
+            <translation>Transparência</translation>
         </message>
         <message>
             <source> %</source>
@@ -492,51 +492,51 @@
         </message>
         <message>
             <source>Handles</source>
-            <translation>Ручки</translation>
+            <translation>Alças</translation>
         </message>
         <message>
             <source>Move arrows</source>
-            <translation>Стрелки перемещения</translation>
+            <translation>Setas de movimento</translation>
         </message>
         <message>
             <source>Plane handles</source>
-            <translation>Плоскости</translation>
+            <translation>Alças de plano</translation>
         </message>
         <message>
             <source>Rotation arcs</source>
-            <translation>Дуги поворота</translation>
+            <translation>Arcos de rotação</translation>
         </message>
         <message>
             <source>Scale handles</source>
-            <translation>Ручки масштаба</translation>
+            <translation>Alças de escala</translation>
         </message>
         <message>
             <source>Extrude dots</source>
-            <translation>Точки выдавливания</translation>
+            <translation>Pontos de extrusão</translation>
         </message>
         <message>
             <source>Dragging</source>
-            <translation>Перетаскивание</translation>
+            <translation>Arrasto</translation>
         </message>
         <message>
             <source>Step enabled</source>
-            <translation>Шаг включён</translation>
+            <translation>Passo ativado</translation>
         </message>
         <message>
             <source>Ctrl temporarily inverts the step while dragging</source>
-            <translation>Ctrl временно инвертирует шаг во время перетаскивания</translation>
+            <translation>Ctrl inverte temporariamente o passo durante o arrasto</translation>
         </message>
         <message>
             <source>Move step</source>
-            <translation>Шаг перемещения</translation>
+            <translation>Passo de movimento</translation>
         </message>
         <message>
             <source> mm</source>
-            <translation> мм</translation>
+            <translation> mm</translation>
         </message>
         <message>
             <source>Angle step</source>
-            <translation>Шаг угла</translation>
+            <translation>Passo de ângulo</translation>
         </message>
         <message>
             <source>°</source>
@@ -544,31 +544,31 @@
         </message>
         <message>
             <source>Scale step</source>
-            <translation>Шаг масштаба</translation>
+            <translation>Passo de escala</translation>
         </message>
         <message>
             <source>Drag strength</source>
-            <translation>Сила перетаскивания</translation>
+            <translation>Força do arrasto</translation>
         </message>
         <message>
             <source>Degenerate angle</source>
-            <translation>Угол вырожденности</translation>
+            <translation>Ângulo de degeneração</translation>
         </message>
         <message>
             <source>Pick radius</source>
-            <translation>Радиус пикинга</translation>
+            <translation>Raio de seleção</translation>
         </message>
         <message>
             <source>Slider step</source>
-            <translation>Шаг ползунка</translation>
+            <translation>Passo do controle deslizante</translation>
         </message>
         <message>
             <source>Allow mirroring by negative scale</source>
-            <translation>Разрешить зеркалирование отрицательным масштабом</translation>
+            <translation>Permitir espelhamento por escala negativa</translation>
         </message>
         <message>
             <source>Step modifier</source>
-            <translation>Модификатор шага</translation>
+            <translation>Modificador do passo</translation>
         </message>
         <message>
             <source>Ctrl</source>
@@ -584,193 +584,193 @@
         </message>
         <message>
             <source>Performance</source>
-            <translation>Производительность</translation>
+            <translation>Desempenho</translation>
         </message>
         <message>
             <source>Recompute while dragging</source>
-            <translation>Пересчёт во время перетаскивания</translation>
+            <translation>Recalcular durante o arrasto</translation>
         </message>
         <message>
             <source>Never changes properties only; dependent objects follow on release</source>
-            <translation>Never меняет только свойства; зависимые объекты обновятся при отпускании</translation>
+            <translation>"Never" só altera propriedades; os objetos dependentes seguem ao soltar</translation>
         </message>
         <message>
             <source>Never</source>
-            <translation>Never (никогда)</translation>
+            <translation>Never (nunca)</translation>
         </message>
         <message>
             <source>Throttled</source>
-            <translation>Throttled (с интервалом)</translation>
+            <translation>Throttled (limitado)</translation>
         </message>
         <message>
             <source>Always</source>
-            <translation>Always (всегда)</translation>
+            <translation>Always (sempre)</translation>
         </message>
         <message>
             <source>Recompute interval</source>
-            <translation>Интервал пересчёта</translation>
+            <translation>Intervalo de recálculo</translation>
         </message>
         <message>
             <source>Wireframe preview above</source>
-            <translation>Каркас вместо объектов, если их больше</translation>
+            <translation>Pré-visualização em aramado acima de</translation>
         </message>
         <message>
             <source> objects</source>
-            <translation> объектов</translation>
+            <translation> objetos</translation>
         </message>
     </context>
     <context>
         <name>Axel_AlignCycle</name>
         <message>
             <source>Axel: next alignment</source>
-            <translation>Axel: следующее выравнивание</translation>
+            <translation>Axel: próximo alinhamento</translation>
         </message>
         <message>
             <source>Cycle alignment: world → working plane → object → view</source>
-            <translation>Переключить выравнивание: мир → рабочая плоскость → объект → вид</translation>
+            <translation>Alternar o alinhamento: mundo → plano de trabalho → objeto → vista</translation>
         </message>
     </context>
     <context>
         <name>Axel_AlignObject</name>
         <message>
             <source>Axel: object</source>
-            <translation>Axel: по объекту</translation>
+            <translation>Axel: objeto</translation>
         </message>
         <message>
             <source>Manipulator axes follow the object selected last</source>
-            <translation>Оси манипулятора — по объекту, выделенному последним</translation>
+            <translation>Os eixos do manipulador seguem o último objeto selecionado</translation>
         </message>
     </context>
     <context>
         <name>Axel_AlignView</name>
         <message>
             <source>Axel: view</source>
-            <translation>Axel: по виду</translation>
+            <translation>Axel: vista</translation>
         </message>
         <message>
             <source>Manipulator axes follow the screen: X right, Y up, Z towards the viewer</source>
-            <translation>Оси манипулятора — по экрану: X вправо, Y вверх, Z на наблюдателя</translation>
+            <translation>Os eixos do manipulador seguem a tela: X para a direita, Y para cima, Z em direção ao observador</translation>
         </message>
     </context>
     <context>
         <name>Axel_AlignWorkplane</name>
         <message>
             <source>Axel: working plane</source>
-            <translation>Axel: по рабочей плоскости</translation>
+            <translation>Axel: plano de trabalho</translation>
         </message>
         <message>
             <source>Manipulator axes follow the Draft working plane (world without Draft)</source>
-            <translation>Оси манипулятора — по рабочей плоскости Draft (без Draft — по миру)</translation>
+            <translation>Os eixos do manipulador seguem o plano de trabalho do Draft (mundo sem o Draft)</translation>
         </message>
     </context>
     <context>
         <name>Axel_AlignWorld</name>
         <message>
             <source>Axel: world</source>
-            <translation>Axel: по миру</translation>
+            <translation>Axel: mundo</translation>
         </message>
         <message>
             <source>Manipulator axes are the global X, Y, Z</source>
-            <translation>Оси манипулятора — глобальные X, Y, Z</translation>
+            <translation>Os eixos do manipulador são os X, Y, Z globais</translation>
         </message>
     </context>
     <context>
         <name>Axel_AutoReset</name>
         <message>
             <source>Axel: auto reset</source>
-            <translation>Axel: автосброс</translation>
+            <translation>Axel: redefinição automática</translation>
         </message>
         <message>
             <source>Return to the default frame after a drag</source>
-            <translation>После перетаскивания возвращать рамку по умолчанию</translation>
+            <translation>Voltar ao quadro padrão após um arrasto</translation>
         </message>
     </context>
     <context>
         <name>Axel_OpCopy</name>
         <message>
             <source>Axel: copy (C, C)</source>
-            <translation>Axel: копия (C, C)</translation>
+            <translation>Axel: cópia (C, C)</translation>
         </message>
         <message>
             <source>The next handle drag creates a copy; C, C again clears the operation</source>
-            <translation>Следующее перетаскивание ручки создаёт копию; повторное C, C снимает операцию</translation>
+            <translation>O próximo arrasto de uma alça cria uma cópia; C, C de novo desarma a operação</translation>
         </message>
     </context>
     <context>
         <name>Axel_OpExtrude</name>
         <message>
             <source>Axel: extrude (E, E)</source>
-            <translation>Axel: выдавить (E, E)</translation>
+            <translation>Axel: extrudar (E, E)</translation>
         </message>
         <message>
             <source>The next drag extrudes (adapters of stage 4)</source>
-            <translation>Следующее перетаскивание выдавливает (адаптеры этапа 4)</translation>
+            <translation>O próximo arrasto extruda (adaptadores da etapa 4)</translation>
         </message>
     </context>
     <context>
         <name>Axel_OpSplit</name>
         <message>
             <source>Axel: split into segments (D, D)</source>
-            <translation>Axel: разбить на сегменты (D, D)</translation>
+            <translation>Axel: dividir em segmentos (D, D)</translation>
         </message>
         <message>
             <source>The next drag acts as a segment-count slider (adapters of stage 4)</source>
-            <translation>Следующее перетаскивание работает как ползунок числа сегментов (адаптеры этапа 4)</translation>
+            <translation>O próximo arrasto funciona como controle deslizante do número de segmentos (adaptadores da etapa 4)</translation>
         </message>
     </context>
     <context>
         <name>Axel_Relocate</name>
         <message>
             <source>Axel: relocate the origin</source>
-            <translation>Axel: перенести начало</translation>
+            <translation>Axel: mover a origem</translation>
         </message>
         <message>
             <source>Handles move the frame, not the object. Enter — done, Esc — cancel</source>
-            <translation>Ручки двигают рамку, а не объект. Enter — готово, Esc — отмена</translation>
+            <translation>As alças movem o quadro, não o objeto. Enter — concluir, Esc — cancelar</translation>
         </message>
     </context>
     <context>
         <name>Axel_Reset</name>
         <message>
             <source>Axel: reset the frame</source>
-            <translation>Axel: сбросить положение</translation>
+            <translation>Axel: redefinir o quadro</translation>
         </message>
         <message>
             <source>Default frame for the current target</source>
-            <translation>Рамка по умолчанию для текущей цели</translation>
+            <translation>Quadro padrão para o alvo atual</translation>
         </message>
     </context>
     <context>
         <name>Axel_Settings</name>
         <message>
             <source>Axel: settings…</source>
-            <translation>Axel: настройки…</translation>
+            <translation>Axel: configurações…</translation>
         </message>
         <message>
             <source>Open the Axel settings page in the FreeCAD dialog</source>
-            <translation>Открыть страницу настроек Axel в диалоге FreeCAD</translation>
+            <translation>Abrir a página de configurações do Axel no diálogo do FreeCAD</translation>
         </message>
     </context>
     <context>
         <name>Axel_Step</name>
         <message>
             <source>Axel: step</source>
-            <translation>Axel: шаг</translation>
+            <translation>Axel: passo</translation>
         </message>
         <message>
             <source>Moves snap to MoveStep, rotations to AngleStep; Ctrl inverts it</source>
-            <translation>Перемещение кратно MoveStep, поворот — AngleStep; Ctrl временно инвертирует</translation>
+            <translation>Movimentos se ajustam a MoveStep, rotações a AngleStep; Ctrl inverte</translation>
         </message>
     </context>
     <context>
         <name>Axel_Toggle</name>
         <message>
             <source>Axel: manipulator</source>
-            <translation>Axel: манипулятор</translation>
+            <translation>Axel: manipulador</translation>
         </message>
         <message>
             <source>Turn the Axel object manipulator on or off</source>
-            <translation>Включить или выключить манипулятор объектов Axel</translation>
+            <translation>Ligar ou desligar o manipulador de objetos Axel</translation>
         </message>
     </context>
 </TS>

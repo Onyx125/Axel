@@ -4,8 +4,9 @@
 
 Section numbers in parentheses refer to the Axel specification.
 
-## [Unreleased]
+## [0.1.3] — 2026-09-18
 
+- Interface translations (15.5) for German, French, Spanish, Brazilian Portuguese, Simplified Chinese and Japanese (`Axel_<locale>.qm`, locale codes as in FreeCAD); README and the manipulator diagram in the same six languages, with a language switcher at the top.
 - Numeric input started by a digit during a drag (9.3): the field showed the digit reformatted («3» → «3,00») with the caret after the first character, so typing a unit afterwards produced «3 cm,00» and was rejected. The text is now set after the field is shown; «3», then « cm», then Enter gives 30 mm.
 
 ## [0.1.2] — 2026-09-17
